@@ -1,0 +1,14 @@
+{
+  "bow": {
+    "short_bow": {
+      "lvl": 0,
+      "weight": 1,
+      "type": "ranged",
+      "equip_slots": [
+        { "backstraps": 1 },
+        { "backspace": 3 }
+      ]
+    }
+  }
+
+  }

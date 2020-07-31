@@ -1,0 +1,25 @@
+{
+  "exchangeRate": {
+    "1 Gold Ingot": {
+      "Gold Coin": 50
+    },
+    "1 Silver Ingot": {
+      "Silver Coin": 50
+    },
+    "1 Gold Coin": {
+      "Silver Coin": 9,
+      "Bronze Coin": 126,
+      "Shilling": 3024
+    },
+    "1 Silver Coin": {
+      "Bronze Coin": 14,
+      "Shilling": 336
+    },
+    "1 Bronze Coin": {
+      "Shilling": 24
+    },
+    "1 Shilling": {},
+    "other coin": "other value"
+  }
+  
+}

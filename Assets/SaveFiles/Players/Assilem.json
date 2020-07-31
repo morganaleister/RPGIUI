@@ -1,0 +1,420 @@
+{
+
+  "info": {
+    "type": 1,
+    "level": 2,
+    "name": "assilem",
+    "job": "glassmith",
+    "class": "mage"
+  },
+  "containers": {
+    "moneybag": {
+      "gold": 3,
+      "silver": 11,
+      "bronze": 0,
+      "shillings": 30
+    },
+    "big_cow_leather_bag_with_close_strap": {
+      "stats": {
+
+        "quality": 2,
+        "durability": 0,
+        "repairable": true,
+        "repairs": 0,
+        "max_stack": 1,
+        "capacity": {
+          "total": 250,
+          "used": 0
+        },
+        "equip_slots": [
+          { "backstraps": 1 },
+          { "backspace": 12 }
+
+        ]
+      },
+
+      "compass": {
+        "size": 0.5
+      },
+      "small_spyglass": {
+        "size": 1
+      },
+      "small_cooking_pot1": {
+        "capacity": {
+          "total": 1,
+          "used": 1
+        },
+        "white_smelling_salts": {}
+      },
+      "small_cooking_pot2": {
+        "capacity": {
+          "total": 1,
+          "used": 1
+        },
+        "pink_smelling_salts": {}
+      },
+      "unknown_parchments": {
+        "parchment1": {
+          "size": 3,
+          "type": "spell/enchantment",
+          "contents": "unknown"
+        },
+        "parchment2": {
+          "size": 3,
+          "type": "spell/enchantment",
+          "contents": "unknown"
+        },
+        "parchment3": {
+          "size": 3,
+          "type": "spell/enchantment",
+          "contents": "unknown"
+        },
+        "parchment4": {
+          "size": 3,
+          "type": "scientificdocument",
+          "contents": "mineral"
+        },
+        "parchment5": {
+          "size": 3,
+          "type": "scientificdocument",
+          "contents": "mineral"
+        }
+      }
+    },
+    "medium_leather_quiver": {
+      "capacity": {
+        "total": 50,
+        "used": 17
+      },
+      "feathereduntippedwoodenarrows": {
+        "qty": 17,
+        "flightmultiplier": 1.83,
+        "damagemultiplier": 1,
+        "accuarcymultiplier": 1.3
+      }
+    },
+    "potionsleatherbelt": { "Q" }
+  },
+  "skills": {
+
+    "chaos": {
+      "pyro": {
+        "tier": 0,
+        "lvl": 4,
+        "bonuses": {
+
+          "basedmg": 0,
+          "basedmgmultip": 1,
+          "basecastspeed": 0,
+          "basecastspeedmultip": 1,
+          "basetravelspeed": 0,
+          "basetravelspeedmultip": 1
+        },
+
+        "boladefuego": {
+          "tier": 1,
+          "xp": 6,
+          "lvl": 5,
+          "hits": 1,
+          "casts": 1,
+          "res_cost": 8,
+          "base_dmg": 12,
+          "weap_req": null,
+          "base_range": 20,
+          "base_cast_speed": 1,
+          "base_travel_speed": 6,
+
+          "bola_de_fuego_múltiple": {
+            "tier": 2,
+            "xp": 1,
+            "lvl": 1,
+            "hits": 2,
+            "casts": 1,
+            "res_cost": 16,
+            "base_dmg": 24,
+            "weap_req": null,
+            "base_range": 20,
+            "base_cast_speed": 1,
+            "base_travel_speed": 6
+          },
+
+          "[chargeable] bola_de_fuego_mayor": {
+            "tier": 2,
+            "xp": 1,
+            "lvl": 0,
+            "hits": 1,
+            "casts": 1,
+            "res_cost": 16,
+            "base_dmg": 24,
+            "weap_req": null,
+            "base_range": 20,
+            "base_casts_peed": 1.25,
+            "base_travel_speed": 6
+          },
+          "flecha_de_fuego": {
+            "xp": 1,
+            "lvl": 1,
+            "weap_req": {
+              "type": "bow",
+              "jewel": [ "Ruby" ]
+            },
+            "Resource": {
+              "type": "arrow",
+              "qty": 1,
+              "recoverable": false
+            }
+          }
+        },
+        "Incendio": {
+          "tier": 1,
+          "xp": 0,
+          "lvl": 0,
+          "hits": 1,
+          "casts": 1,
+          "res_cost": 50,
+          "base_dmg": 70,
+          "weap_req": null,
+          "base_range": 6,
+          "base_cast_speed": 5,
+          "base_travel_speed": 0,
+          "expire_time": 0,
+          "aoe": {
+            "shape": "donut slice",
+            "initial_wlh": "1,1,1",
+            "final_wlh": "3,6,1"
+          }
+        }
+
+      },
+      "amni": {
+        "lvl": 1,
+        "[pasiva]agilidad_mágica": {
+          "xp": 7,
+          "lvl": 1,
+
+          "base_dmg": null,
+          "base_range": 0,
+          "base_cast_speed": 0,
+          "base_travel_speed": 0,
+          "res costs": {
+            "cast": 0.5,
+            "de_cast": 0,
+            "over_sec": 0.5,
+            "over_qty": 0
+          },
+          "effects": {
+            "self": {
+              "attributes": {
+                "Agi": {
+                  "multiply while active": 1.5
+                }
+              }
+            }
+          },
+
+          "[follow-up]empuje": {
+            "xp": 0,
+            "lvl": 0,
+            "hits": 1,
+            "casts": 1,
+            "move": 4,
+            "res_cost": 10,
+            "base_dmg": 14,
+            "base_range": 1,
+            "base_cast_speed": 1,
+            "base_travel_speed": 2,
+            "weap_req": null
+          }
+        }
+      },
+      "gi": {
+        "lvl": 1,
+        "invoca_al_espíritu_del_lobo(joven)": {
+          "tier": 1,
+          "xp": 3,
+          "lvl": 1,
+          "hits": 10,
+          "casts": 1,
+          "res_cost": 22,
+          "base_dmg": 12,
+          "base_range": 0,
+          "base_cast_speed": 0,
+          "base_travel_speed": 15,
+
+          "invoca_al_espíritu_del_lobo(adulto)": {
+
+            "tier": 2,
+            "xp": 1,
+            "lvl": 1,
+            "hits": 10,
+            "casts": 1,
+            "res_cost": 35,
+            "base_dmg": 36,
+            "base_range": 0,
+            "base_cast_speed": 0,
+            "base_travel_speed": 0
+          }
+        },
+        "invoca_al_espíritu_del_cuervo": {
+          "xp": 4,
+          "lvl": 1,
+          "rescost": 0.5,
+          "basedmg": null,
+          "baserange": 0,
+          "basecastspeed": 0,
+          "basetravelspeed": 0,
+
+          "invoca_al_espíritu_del_cuervo_parlante": {
+            "xp": 0,
+            "lvl": 1,
+            "res-cost": 0.5,
+            "base-dmg": null,
+            "base_range": 0,
+            "base-cast-speed": 0,
+            "base-travel_speed": 0
+          }
+        }
+      },
+      "aqa": {
+        "Látigo_de_agua": {
+          "tier": 1,
+          "xp": 5,
+          "lvl": 4,
+          "hits": 1,
+          "res_cost": 2,
+          "base_dmg": 4,
+          "base_range": 3,
+          "base_cast_speed": 0.25,
+          "base_travel_speed": 0.25,
+
+          "Fuete_de_agua": {
+            "tier": 0,
+            "xp": 0,
+            "lvl": 4,
+            "hits": 2,
+            "rescost": 2,
+            "basedmg": 4,
+            "baserange": 3,
+            "basecastspeed": 0.25,
+            "basetravelspeed": 0.25
+          }
+        }
+      }
+    },
+    "weapon": {
+
+      "bow": {
+
+        "shortbow": {
+          "lvl": 1,
+          "weight": 1,
+          "equip_slots": [
+            { "backstraps": 1 },
+            { "backspace": 3 }
+          ],
+
+          "shot": {
+            "tier": 1,
+            "xp": 3,
+
+            "reqs": {
+              "attributes": {
+                "str": 6
+              }
+            },
+
+            "travel_speed": 50,
+            "range": 45,
+            "cast_time": 2.5
+          }
+        }
+      }
+    }
+
+  },
+  "equipped": {
+    "leather_quiver": {},
+    "leather_forearms": {},
+    "feather_arrows": {},
+    "leather_boots": {},
+    "leather_wrists": {},
+    "medallón_limitador": {},
+    "crystal_ball(unknown)": {},
+    "woodenleathershield": {}
+  },
+  "aquittances": {
+    "william": {
+      "job": "merchant",
+      "Location": "huntertown",
+      "services": {
+        "glass": {},
+        "hunterweapons": {},
+        "hunterarmor": {},
+        "severalitems": {},
+        "variousmagicitems": {},
+        "variousmagicweapons": {},
+        "somemagicarmor": {}
+      }
+    },
+    "Rollo": {
+      "class": "paladin",
+      "Level": 5,
+      "Location": "following"
+    },
+    "Miro": {
+      "class": "hunter",
+      "Level": 3,
+      "Location": "north_hunter_outpost"
+    },
+    "Altair": {
+      "class": "hunter",
+      "Level": 4,
+      "Location": "north_hunter_outpost"
+    },
+    "Brock": {
+      "class": "hunter",
+      "Level": 8,
+      "Location": "following"
+    },
+    "Bastian": {
+      "class": "hunter",
+      "Level": 4,
+      "job": "herbalist_medic",
+      "Location": "north_hunter_outpost",
+      "services": {
+        "herbsmallbandage": {
+          "cost": 35,
+          "heal": 20
+        },
+        "herbmediumbandage": {
+          "cost": 50,
+          "heal": 45
+        },
+        "herbalremedy": {
+          "cost": 100,
+          "heal": 75
+        },
+        "healpotion": {
+          "cost": 150,
+          "heal": 100
+        }
+      },
+      "athelstan": {
+        "class": "hunter",
+        "Location": "unknown"
+      },
+      "==capi==": {
+        "class": "hunter",
+        "Location": "inparty"
+      }
+    },
+    "known_places": {
+      "academy_city": "0,0",
+      "home_town": "0,-7",
+      "ne_city_hunter_town": "-2,3",
+      "alchemist_outpost": "-4,4",
+      "south_west_city_town": "-5,-2",
+      "north_hunter_outpost": "-8,12"
+    }
+  }
+}

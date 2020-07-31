@@ -1,0 +1,86 @@
+{
+  "short_bow_shot": {
+    "tier": 1,
+    "xp": 0,
+
+    "reqs": {
+      "weapon": "short_bow",
+      "attributes": {
+        "str": 6
+      }
+    },
+
+    "hits": 1,
+    "travel_speed": 50,
+    "range": 45,
+    "cast_time": 2.5,
+
+    "short_bow_quick_shot": {
+
+      "tier": 2,
+      "xp": 0,
+
+      "reqs": {
+        "weapon": "short_bow",
+        "attributes": {
+          "str": 4
+        }
+      },
+
+      "hits": 1,
+      "travel_speed": 40,
+      "range": 22,
+      "cast_time": 1.25,
+
+      "short_bow_multiple_quick_shot": {
+
+        "tier": 3,
+        "xp": 0,
+
+        "reqs": {
+          "weapon": "short_bow",
+          "attributes": {
+            "str": 4,
+            "agi": 7
+          }
+        },
+
+        "hits": 2,
+        "travel_speed": 40,
+        "range": 22,
+        "cast_time": 2.25
+      }
+    },
+
+    "short_bow_charged_shot": {
+      "tier": 2,
+      "xp": 0,
+
+      "reqs": {
+        "weapon": "short_bow",
+        "attributes": {
+          "str": 8
+        }
+      },
+
+      "travel_speed": 25,
+      "range": 22,
+      "cast_time": 1.75
+    },
+    "short_bow_precise_shot": { "tier": 2 }
+  },
+
+
+
+  "long_bow": {
+    "long_bow_shot": {
+      "tier": 1,
+      "xp": 0,
+      "base_travel_speed": 70
+    },
+    "Charged Shot": { "tier": 2 },
+    "Long Shot": { "tier": 2 }
+  }
+
+
+} }

@@ -1,0 +1,124 @@
+﻿{
+  "attributes": {
+    "resource": "MP",
+    "power": "Foc",
+    "accuarcy": "Per",
+    "cast speed": "Int"
+  },
+  "pyro": {
+    "tier": 0,
+    "description": "The power to make molecules hiper-vibrate , thus increasing temperature",
+    "effects": [ "warm", "heat", "cook", "combust", "burn", "roast", "evaporate", "carbonize", "melt", "refract", "phase", "portal", "nuke", "fuse" ],
+
+
+
+    "bola de fuego": {
+      "tier": 1,
+      "description": "A hand-size flying fireball",
+      "effects": {
+        "regular": [ "combust" ],
+        "critical": [ "burn" ]
+      },
+      "type": "ranged",
+      "resource cost": 2,
+      "damage": 1,
+      "range": 1,
+
+      "Doble bola de fuego": {
+        "tier": 2,
+        "description": "Two simultaneous fireballs"
+      },
+
+      "Bola de fuego mayor": {
+        "tier": 2,
+        "description": "An almost double size fireball"
+      }
+    },
+    "Fireburst": {
+      "tier": 1,
+      "description": "A small burst of continues flames in a medium_wide area that travel up to a short distance"
+    },
+    "Conflagración": {
+      "tier": 1,
+      "description": "A straight forward wave of fire that vanishes along its path",
+      "res costs": {
+        "cast": 0.5,
+        "over_sec": 0.5,
+        "over_qty": 0
+      },
+      "dmg": null,
+      "range": 0,
+      "cast speed": 0,
+      "travel speed": 0
+    }
+
+  },
+  "Amni": {
+    "description": "The power to move molecules from one spot to another",
+    "tier": 0,
+
+    "[Pasiva] Agilidad mágica": {
+      "description": "A thin layer of air surrounding the user's body moves towards where the user is about to move, thus decreasing physical air resistance and increasing one's agility by (1.5) times",
+      "tier": 1,
+      "res costs": {
+        "cast": 0.5,
+        "de_cast": 0,
+        "over_sec": 0.5,
+        "over_qty": 0
+      },
+      "effects": {
+        "self": {
+          "attributes": {
+            "Agi": {
+              "multiply while active": 1.5
+            }
+          }
+        }
+      },
+
+      "[Follow_up] Empuje": {
+        "description": "After aking {4} steps with (Agilidad mágica) ON, a sudden stop causes a follow_up shockwave that keeps moving forward over {2} units and smashes against the first obstacle in its path, dealing {14} damage and can knockback",
+        "tier": 2,
+        "reqs": {
+          "follow_up": "parent",
+          "min cast success range": 4, //indicates minimum 100% cast success change, halving by each point below.
+          "max range": 4 //indicates maximum cast range
+        },
+        "res costs": {
+          "cast": 10,
+          "over_sec": 0,
+          "over_qty": 0
+        },
+        "dmg": 14,
+        "range": 2,
+        "cast speed": 0,
+        "travel speed": 0
+
+      }
+    }
+  },
+  "Gi": {
+    "tier": 0,
+    "description": "The power to connect to the planet's natural energies",
+    "Invoca al espíritu del lobo (joven)": {
+      "tier": 1,
+      "description": "Summons a young spirit wolf that obeys commands and aids you in battle",
+      "Invoca al espíritu del lobo (adulto)": {
+
+      }
+    },
+    "Invoca al espíritu del cuervo": {
+      "tier": 1,
+      "description": "",
+      "Invoca al espíritu del cuervo parlante": {
+        "tier": 2
+      }
+    }
+  },
+  "Aqa": {
+    "description": "",
+    "Látigo de agua": {
+      "description": ""
+    }
+  }
+}

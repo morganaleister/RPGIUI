@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 3c28f31325692fc4eb05722bbc073c79
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Wallau
+  fontNames:
+  - Wallau
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 049e6206273776c43a9c47fbd14db7b7, type: 3}
+  - {fileID: 12800000, guid: 08bd0b382609cf44d816f3bee279a8a6, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

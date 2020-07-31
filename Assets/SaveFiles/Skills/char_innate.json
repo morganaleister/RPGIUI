@@ -1,0 +1,37 @@
+{
+  "battle": {
+    "tier": 0,
+    "move": {
+      "tier": 1,
+      "crawl": {},
+      "squat": {},
+      "walk": {},
+      "run": {},
+      "jump": {}
+    },
+    "attack": {
+      "punch": {},
+      "push": {},
+      "slap": {},
+      "scratch": {},
+      "kick": {},
+      "throw": {}
+    },
+    "stance": {
+      "stand_up": {},
+      "head_cover": {},
+      "crouch": {},
+      "face_down": {},
+      "face_up": {}
+    },
+    "other": {
+
+      "pick_up": {}
+    }
+  },
+  "map": {
+    "tier": 0,
+    "read": {},
+    "mark": {}
+  }
+}
