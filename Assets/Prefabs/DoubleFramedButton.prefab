@@ -81,6 +81,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1640122869064580189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8367849004622323295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ace9b5ec2f48784692740cc325a0291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionOnHighlight:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5565566228832016751}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  actionOnDehighlight:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5565566228832016751}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  actionOnSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  actionOnDeselect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &6879055296653121158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -309,8 +355,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 595ce06610bdf494ab0dcdabb2d4f332,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5673237356441236831, guid: 091ed43cac53c3540a26f61d70816344, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 091ed43cac53c3540a26f61d70816344, type: 3}
+--- !u!1 &8367849004622323295 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3123178231148693721, guid: 091ed43cac53c3540a26f61d70816344,
+    type: 3}
+  m_PrefabInstance: {fileID: 6879055296653121158}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8344040963297956621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3223642011121321355, guid: 091ed43cac53c3540a26f61d70816344,

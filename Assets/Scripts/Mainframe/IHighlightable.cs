@@ -1,5 +1,6 @@
 ﻿using System;
-namespace Scripts.Controller
+
+namespace Scripts.Mainframe
 {
     public interface IHighlightable
     {

@@ -1,17 +1,13 @@
-﻿
-using System;
-using Scripts.Controller;
+﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
 
-namespace Scripts
-{
-    
-    public class BaseButton : MonoBehaviour, IHighlightable, ISelectable
+namespace Scripts.Mainframe
+{    
+    public class BaseButton : MonoBehaviour, ISelectable
     {
-        public UnityEvent actionOnHighlight, actionOnDehighlight;
-        public UnityEvent actionOnSelect, actionOnDeselect;
+        public UnityEvent actionOnHighlight, actionOnDehighlight,
+            actionOnSelect, actionOnDeselect;
 
         private bool _isHighlighted, _isSelected;
 

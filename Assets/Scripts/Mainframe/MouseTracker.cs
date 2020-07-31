@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Scripts.Mainframe;
-using UnityEngine.UIElements;
 
-namespace Scripts.Controller
+namespace Scripts.Mainframe
 {
     public partial class MouseTracker : MonoBehaviour
     {
@@ -22,7 +19,7 @@ namespace Scripts.Controller
         public float DblClickSpeed { get => _dblClickSpeed; set => _dblClickSpeed = value; }
 
         private Vector3 m_lastPos;
-        [SerializeField] private float _clickSpeed, _dblClickSpeed;
+        [SerializeField] private float _clickSpeed = .12f, _dblClickSpeed = .2f;
         private static float _mbLDownStarted, _mbLDownEnded, last_mbLClickTime;
         private static float _mbRDownStarted, _mbRDownEnded, last_mbRClickTime;
         private static float _mbMDownStarted, _mbMDownEnded, last_mbMClickTime;
@@ -33,7 +30,11 @@ namespace Scripts.Controller
         private void Awake()
         {
             MouseMoving += OnMove;
+            LeftClick += OnLeftClick;
+
         }
+
+        private void OnLeftClick() { if(Highlighted != null) ((ISelectable) Highlighted).Select(); }
 
         private void FixedUpdate()
         {
@@ -95,7 +96,7 @@ namespace Scripts.Controller
 
                         DoubleClicked.Value = true;
                         DoubleCick?.Invoke();
-                        Debug.Log("Double clicked");
+                        //Debug.Log("Double clicked");
                     }
                     else //...but such was too long ago (BtnUpTime - LastClickTime > DblClickSpeed)..
                         //..wait 4 a next double click b4 click
@@ -120,7 +121,7 @@ namespace Scripts.Controller
             {
                 SingleClick?.Invoke(); //invoke a single click
                 DoubleClicked.Value = false;
-                Debug.Log("Single clicked");
+                //Debug.Log("Single clicked");
             }
             else DoubleClicked.Value = false;
 
@@ -129,9 +130,7 @@ namespace Scripts.Controller
         #endregion
 
         private void OnMove()
-        {          
-            
-
+        {   
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -161,9 +160,6 @@ namespace Scripts.Controller
                 }
             }
         }
-
-
-
 
     }
 }
