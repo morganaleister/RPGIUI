@@ -16,10 +16,8 @@ namespace Scripts.Mainframe
 
         public IHighlightable Highlighted { get; private set; }
         public float ClickSpeed { get => _clickSpeed; set => _clickSpeed = value; }
-        public float DblClickSpeed { get => _dblClickSpeed; set => _dblClickSpeed = value; }
-
         private Vector3 m_lastPos;
-        [SerializeField] private float _clickSpeed = .12f, _dblClickSpeed = .2f;
+        [SerializeField] private float _clickSpeed = .12f;
         private static float _mbLDownStarted, _mbLDownEnded, last_mbLClickTime;
         private static float _mbRDownStarted, _mbRDownEnded, last_mbRClickTime;
         private static float _mbMDownStarted, _mbMDownEnded, last_mbMClickTime;
@@ -91,7 +89,7 @@ namespace Scripts.Mainframe
                 if (LastBtnClickTime != 0f) // if there has been a previous successful click...
                 {
                     //BtnUptime(now) - LastClickTime = doubleclicktime
-                    if (BtnDownEnded - LastBtnClickTime <= DblClickSpeed)
+                    if (BtnDownEnded - LastBtnClickTime <= ClickSpeed * 2)
                     {//this is an accepted double click
 
                         DoubleClicked.Value = true;
@@ -100,12 +98,12 @@ namespace Scripts.Mainframe
                     }
                     else //...but such was too long ago (BtnUpTime - LastClickTime > DblClickSpeed)..
                         //..wait 4 a next double click b4 click
-                        StartCoroutine(WaitForDoubleClick(SingleClick, DoubleClicked, ClickSpeed, DblClickSpeed));
+                        StartCoroutine(WaitForDoubleClick(SingleClick, DoubleClicked, ClickSpeed, ClickSpeed * 2));
 
                 }
                 else //there hasn't ever been a successful click before (LastBtnClickTime == 0)
                     //so wait 4 a next double click b4 click
-                    StartCoroutine(WaitForDoubleClick(SingleClick, DoubleClicked, ClickSpeed, DblClickSpeed));
+                    StartCoroutine(WaitForDoubleClick(SingleClick, DoubleClicked, ClickSpeed, ClickSpeed * 2));
 
                 LastBtnClickTime = BtnDownEnded; //this is now the Last accepted click
             }
@@ -115,7 +113,7 @@ namespace Scripts.Mainframe
             (Action SingleClick, ByRef<bool> DoubleClicked,
             float ClickSpeed, float DblClickSpeed)
         {
-            yield return new WaitForSecondsRealtime(ClickSpeed + DblClickSpeed);
+            yield return new WaitForSecondsRealtime(ClickSpeed);
 
             if (!DoubleClicked.Value)
             {

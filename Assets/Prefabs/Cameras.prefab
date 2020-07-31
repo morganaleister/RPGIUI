@@ -60,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968669863952047300}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 25.9, y: 6.9, z: 35.5}
+  m_LocalPosition: {x: 25.5, y: 100, z: 35.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2361521970870667650}
@@ -79,7 +79,7 @@ Camera:
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
-  m_FOVAxisMode: 0
+  m_FOVAxisMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
   m_FocalLength: 50
@@ -91,9 +91,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  field of view: 26.885763
+  orthographic: 1
+  orthographic size: 18
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -174,13 +174,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5325907799468492860}
-  m_LocalRotation: {x: 0.43208575, y: -0, z: -0, w: 0.9018325}
-  m_LocalPosition: {x: 24.7805, y: -7.179699, z: 16.013681}
+  m_LocalRotation: {x: 0.46933135, y: -0, z: -0, w: 0.8830222}
+  m_LocalPosition: {x: 25.5, y: 2.1000004, z: 12.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2361521970870667650}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 51.2, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 55.982002, y: 0, z: 0}
 --- !u!20 &5325907799468492833
 Camera:
   m_ObjectHideFlags: 0
@@ -289,13 +289,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9098300731818655261}
-  m_LocalRotation: {x: -0.36012346, y: -0.3002578, z: 0.048589677, w: -0.8819271}
-  m_LocalPosition: {x: 2.71, y: -11.536449, z: 11.880001}
+  m_LocalRotation: {x: -0.26719397, y: -0.30717853, z: 0.015975542, w: -0.9132325}
+  m_LocalPosition: {x: 2.710001, y: -11.536449, z: 11.880001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2361521970870667650}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 41.635002, y: 41.436, z: 10.06}
+  m_LocalEulerAnglesHint: {x: 29.857002, y: 39.574, z: 8.953}
 --- !u!20 &4397442872359928213
 Camera:
   m_ObjectHideFlags: 0

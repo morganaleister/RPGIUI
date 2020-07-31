@@ -43,12 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2345654a57fa8504f94a4f9b179d16c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneList:
-  - m_SceneAsset: {fileID: 102900000, guid: 95135a00787562f43934774baca8a1b3, type: 3}
-    m_SceneName: StartScreen
-  - m_SceneAsset: {fileID: 102900000, guid: 39fa383d299e2d04cb073a4324ec27e1, type: 3}
-    m_SceneName: CreateMenu
-  - m_SceneAsset: {fileID: 0}
+  sfPlayMenu:
+    m_SceneAsset: {fileID: 102900000, guid: fc6a257d922662d4bbb9d943dd291ef3, type: 3}
     m_SceneName: PlayMenu
-  - m_SceneAsset: {fileID: 102900000, guid: afbce751dc0855347ab9492069da2e0c, type: 3}
+  sfCreateMenu:
+    m_SceneAsset: {fileID: 102900000, guid: 39fa383d299e2d04cb073a4324ec27e1, type: 3}
+    m_SceneName: CreateMenu
+  sfDiceMenu:
+    m_SceneAsset: {fileID: 102900000, guid: afbce751dc0855347ab9492069da2e0c, type: 3}
     m_SceneName: DiceMenu
