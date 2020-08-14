@@ -7,9 +7,28 @@ namespace Scripts.Mainframe
     [ExecuteInEditMode]
     public class ShadedTextButton : BaseButton
     {
-        public string _text = "";
+        [SerializeField] private string _text = "";
+        [SerializeField] private float _size = 10;
 
         [SerializeField] private List<TMP_Text> _texts = new List<TMP_Text>();
+
+        public string Text { 
+            get => _text; 
+            set
+            {
+                _text = value;
+                Apply();
+            } 
+        }
+        public float Size
+        {
+            get => _size;
+            set
+            {
+                _size = value;
+                Apply();
+            }
+        }
 
 
         private void OnValidate() => Apply();
@@ -23,7 +42,11 @@ namespace Scripts.Mainframe
                 _texts = new List<TMP_Text>();
                 _texts.AddRange(cic);
             }
-            foreach (TMP_Text t in _texts) t.text = _text;
+            foreach (TMP_Text t in _texts)
+            {
+                t.text = _text;
+                t.fontSize = _size;
+            }
         }
     }
 }

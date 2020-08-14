@@ -51,7 +51,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7478920271576824318
 Transform:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
+  m_TargetDisplay: 1
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -158,7 +158,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5325907799468492832}
   - component: {fileID: 5325907799468492833}
-  - component: {fileID: 5325907799468492862}
   - component: {fileID: 5325907799468492863}
   m_Layer: 0
   m_Name: Main Camera
@@ -166,7 +165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5325907799468492832
 Transform:
   m_ObjectHideFlags: 0
@@ -224,14 +223,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &5325907799468492862
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5325907799468492860}
-  m_Enabled: 1
 --- !u!114 &5325907799468492863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,7 +264,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7896952340612382893}
   - component: {fileID: 4397442872359928213}
-  - component: {fileID: 3941252463091071784}
   - component: {fileID: 4861593917901517563}
   m_Layer: 0
   m_Name: Side Camera
@@ -330,7 +320,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
+  m_TargetDisplay: 2
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -339,14 +329,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &3941252463091071784
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9098300731818655261}
-  m_Enabled: 1
 --- !u!114 &4861593917901517563
 MonoBehaviour:
   m_ObjectHideFlags: 0

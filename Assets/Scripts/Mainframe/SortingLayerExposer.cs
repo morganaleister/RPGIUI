@@ -22,7 +22,7 @@ namespace Scripts.Mainframe
             apply();
         }
 
-        public void OnEnable()
+        private void OnEnable()
         {
             apply();
         }

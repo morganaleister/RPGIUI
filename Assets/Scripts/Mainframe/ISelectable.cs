@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Scripts.Mainframe
 {
-    public interface ISelectable : IHighlightable
+    public interface ISelectable : IPressable
     {
         event Action Selected, Deselected;
         bool IsSelected { get; }

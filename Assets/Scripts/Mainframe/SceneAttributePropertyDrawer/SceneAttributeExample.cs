@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 class SceneAttributeExample : MonoBehaviour
 {
-    [Scene]
-    public string unityScene;
+    //[Scene]
+    //public string unityScene;
 
     [Scene]
     [SerializeField]
