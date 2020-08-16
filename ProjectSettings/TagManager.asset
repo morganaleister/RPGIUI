@@ -41,9 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: on table
+  - name: Equipment
     uniqueID: 2027608271
-    locked: 0
-  - name: on close view
-    uniqueID: 2944819439
     locked: 0

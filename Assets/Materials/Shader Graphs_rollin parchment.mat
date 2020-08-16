@@ -10,7 +10,7 @@ Material:
   m_Name: Shader Graphs_rollin parchment
   m_Shader: {fileID: -6465566751694194690, guid: 39d0077349e53614cbb100f61c665b6b,
     type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1

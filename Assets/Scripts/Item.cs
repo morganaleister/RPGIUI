@@ -10,5 +10,11 @@
 
         }
     }
+    public interface IStackable
+    {
+        bool IsStackable { get; }
+        int Stacked { get; }
+        void Stack();
+    }
 
 }

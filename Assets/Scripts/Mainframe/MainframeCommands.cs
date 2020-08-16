@@ -42,7 +42,6 @@ namespace Scripts.Mainframe
                             !((IPressable)Highlighted).IsPressed)
                         {
                             lastHit.Dehighlight();//dehighlight old one
-                            Release();
                             //and highlight current one
                             
                             Highlighted.Highlight();
@@ -83,6 +82,7 @@ namespace Scripts.Mainframe
                 Pressed = null;
             }
         }
+
 
         public void LoadScene(int index) => SceneManager.LoadScene(Singleton._sceneFields[index]);
 

@@ -4,8 +4,8 @@ namespace Scripts
 {
     public class BaseObject : MonoBehaviour
     {
-        private long i_id;
-        public long ID { get => i_id; }
+        [SerializeField] protected Renderer[] picture;
+        public long ID { get; private set; }
         public BaseObject(string idSeed)
         {
             SetIDfrom(this, idSeed);
@@ -15,7 +15,7 @@ namespace Scripts
 
             char[] cc = idSeed.ToLowerInvariant().Trim().Replace(" ", "_").ToCharArray();
 
-            long res = cc.Length ^ 2;
+            long Return = cc.Length ^ 2;
 
             for (int i = 0; i < cc.Length; i++)
             {
@@ -26,13 +26,14 @@ namespace Scripts
                 if (i == 0) last = 0;
                 else last = (long) CharUnicodeInfo.GetNumericValue(cc[i - 1]);
 
-                res += (unicode * (i + 1)) - last;
+                Return += (unicode * (i + 1)) - last;
             }
 
-            return res;
+            return Return;
         }
-        private static void SetIDfrom(BaseObject baseObject, string idSeed) => baseObject.i_id = GetIDfrom(idSeed);
-        protected void SetID(string idSeed) => SetIDfrom(this, idSeed);
+        private static void SetIDfrom(BaseObject baseObject, string idSeed) => baseObject.ID = GetIDfrom(idSeed);
+        protected virtual void SetID() => SetIDfrom(this, name);
+        protected virtual void SetID(string from) => SetIDfrom(this, from);
 
 
     }
