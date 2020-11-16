@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0e5f725e3fccb43923f345b7b8dae7, type: 3}
+  m_Name: AllDices_default
+  m_EditorClassIdentifier: 
+  _formula:
+  - size: 4
+    sprite: {fileID: 21300000, guid: e3b5dd089fa1c43488fe5618a19ac4c6, type: 3}
+  - size: 6
+    sprite: {fileID: 21300000, guid: a6cb2eaafde9ee2428fc9171fb084f31, type: 3}
+  - size: 8
+    sprite: {fileID: 21300000, guid: bc13f1c8998f90d408e1f45ea58e6321, type: 3}
+  - size: 10
+    sprite: {fileID: 21300000, guid: 2990fb62968d8d94f853604f851a7c70, type: 3}
+  - size: 12
+    sprite: {fileID: 21300000, guid: 969a0c2dd896d964eaf46226e8e9531e, type: 3}
+  - size: 20
+    sprite: {fileID: 21300000, guid: 7702009975ca8264eba50da1835150cf, type: 3}
+  - size: 24
+    sprite: {fileID: 21300000, guid: c69233865587a0440b92939d5416a295, type: 3}
+  - size: 30
+    sprite: {fileID: 21300000, guid: 0f01a403c5fde6a40975fd3f2618ae26, type: 3}

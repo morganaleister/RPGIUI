@@ -2,7 +2,7 @@
 using System.Data;
 using UnityEngine;
 
-namespace Scripts.Mainframe
+namespace Scripts.MainframeReference
 {
     public class Timestamp
     {

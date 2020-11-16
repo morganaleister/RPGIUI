@@ -16,7 +16,7 @@ namespace Scripts
         public Character[] Characters { get; set; }
 
 
-        public Player(string playerName) : base(playerName) => PlayerName = playerName;
+        public Player(string playerName) => PlayerName = playerName;
 
 
 

@@ -4,11 +4,6 @@
     {
         public string ItemName { get; set; }
 
-        public Item(string name): base(name)
-        {
-            ItemName = name;
-
-        }
     }
     public interface IStackable
     {

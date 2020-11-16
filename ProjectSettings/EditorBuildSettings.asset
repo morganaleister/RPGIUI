@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScreen.unity
     guid: 95135a00787562f43934774baca8a1b3
   - enabled: 1
+    path: Assets/Scenes/CreateCharacter.unity
+    guid: 2d8c9cc83da4a5540a34e9d9fa5f8a0e
+  - enabled: 1
     path: Assets/Scenes/CreateMenu.unity
     guid: 39fa383d299e2d04cb073a4324ec27e1
   - enabled: 1

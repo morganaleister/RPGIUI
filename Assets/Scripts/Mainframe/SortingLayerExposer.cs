@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-namespace Scripts.Mainframe
+namespace Scripts.MainframeReference
 {
     /// <summary>
     /// Place on a 3D object to modify its visibility relative to Sprite 'sorting

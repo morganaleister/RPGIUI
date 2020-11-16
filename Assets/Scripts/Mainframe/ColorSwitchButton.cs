@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Scripts.Mainframe
+namespace Scripts.MainframeReference
 {
     public class ColorSwitchButton : BaseButton
     {

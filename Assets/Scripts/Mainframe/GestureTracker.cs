@@ -7,7 +7,7 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Scripts.Mainframe
+namespace Scripts.MainframeReference
 {
     public class GestureTracker : MouseTracker
     {
@@ -122,7 +122,7 @@ namespace Scripts.Mainframe
         private static void CheckForGestures()
         {
 
-            CheckForGesture_Click();
+            //CheckForGesture_Click();
             //CheckForGesture_Drag();
             //CheckForGesture_DblClick();            
             //CheckForGesture_TrpClick();
