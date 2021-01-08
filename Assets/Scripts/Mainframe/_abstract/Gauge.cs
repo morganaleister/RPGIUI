@@ -1,28 +1,79 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace Scripts.MainframeReference
 {
     [System.Serializable]
-    public class Gauge
+    public class Informant : UnityEvent<InformantObject>
     {
-        [SerializeField] private string _label;
-        [SerializeField] private float _current, _max;
+    }
+    [System.Serializable]
+    public struct InformantObject
+    {
+        public Object _object;
+        public float _value;
+        public string _text;
 
-        public string Label { get => _label; set => _label = value; }
-        public float Current 
+        public InformantObject(Object o, float v, string t)
         {
-            get => _current; 
-            set 
-            {
-                if (value <= Max)
-                    _current = value;
-                else //value bigger > than Max
-                    _current = Max;
-            } 
+            _object = o;
+            _value = v;
+            _text = t;
         }
-        public float CurrentPercentage { get => (Current * 100) / _max; }
-        public float Max { get => _max; set => _max = value; }
-        
+    }
+
+    /// <summary>
+    /// A labeled float-pair field where one field dictates the max value of another, and that one also can't go below 0
+    /// </summary>
+    [System.Serializable]
+    public class Gauge : MonoBehaviour
+    {
+        public Informant ValueChanged;
+
+        public string _type;
+        [SerializeField]
+        private float
+            _current = 0;
+        public bool
+            _underflow = false,
+            _overflow = false;
+
+        public string Type { get; set; }
+        public bool Underflow { get; set; }
+        public bool Overflow { get; set; }
+        public float Max { get; set; }
+
+        public float Current
+        {
+            get => _current;
+            set
+            {
+                if (value == _current) return; //so event doesn't fire
+
+
+                if (value <= Max && value >=)
+                    _current = value;//just assign
+                else  //value bigger > than Max
+                {
+                    if(Overflow)//overflow allowed
+                    { 
+                        _current = Max;//can't get bigger than max
+                }
+                if (_current < 0)
+                    _current = 0; //but won't go below 0
+
+
+                string _info = string.Format("{0} {1}", ToString(), Normalized);
+                InformantObject io = new InformantObject(this, Normalized, _info);
+                ValueChanged?.Invoke(io);
+            }
+        }
+
+        public float Normalized { get => _current / _max; }
+
+        public static implicit operator float(Gauge gauge) { return gauge._current; }
+
+
 
 
     }

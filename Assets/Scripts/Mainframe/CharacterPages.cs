@@ -17,10 +17,10 @@ namespace Scripts.MainframeReference
             if (!Singleton) Singleton = this;
             else if (Singleton != this)
             {
-                Debug.Log(gameObject.ToString());
+                UnityEngine.Debug.Log(gameObject.ToString());
                 Destroy(gameObject); //will it work?
-                Debug.Log(gameObject.ToString());
-                Debug.Log("If previous log reads error AndAlso first one didn't, Singleton pattern worked.");
+                UnityEngine.Debug.Log(gameObject.ToString());
+                UnityEngine.Debug.Log("If previous log reads error AndAlso first one didn't, Singleton pattern worked.");
             }
             if (!_target)
             {
@@ -53,12 +53,12 @@ namespace Scripts.MainframeReference
             if (!ans)
             { //cancel if not authorized to overwrite
 
-                Debug.Log("Save operation sucessfully cancelled.");
+                UnityEngine.Debug.Log("Save operation sucessfully cancelled.");
                 yield break;
             }
             else FilesManager.Save(_target, FilesManager.FileEncoding, ans);
 
-            Debug.Log("Save operation successful. File overwritten");
+            UnityEngine.Debug.Log("Save operation successful. File overwritten");
 
             yield break;
         }

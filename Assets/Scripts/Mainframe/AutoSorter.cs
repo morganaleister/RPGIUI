@@ -8,26 +8,25 @@ namespace Scripts.MainframeReference
     public class AutoSorter : MonoBehaviour
     {
         public UnityEvent OnChildrenChanged;
+        public Transform ParentObject;
+        
 
         public enum XYZ { xy, zy, xz }
 
         public XYZ _mode;
-        [SerializeField] private uint _maxH = 1, _MaxV = 1;
-        [SerializeField] private float _spaceH, _spaceV;
+        [SerializeField] private Vector2 _maxHV;
+        [SerializeField] private Vector2 _spaceHV;
         [SerializeField] private List<Transform> _children = new List<Transform>();
 
-        public float SpacingH { get => _spaceH; set => _spaceH = value; }
-        public float SpacingV { get => _spaceV; set => _spaceV = value; }
-        public uint MaxSlotsH { get => _maxH; set => _maxH = CustomClamp(value); }
-        public uint MaxSlotsV { get => _MaxV; set => _MaxV = CustomClamp(value); }
 
-        private static uint CustomClamp(uint value) =>
-            (uint)Mathf.Clamp(value, 1, float.MaxValue);
+        public Vector2 SpacingHV { get => _spaceHV; set => _spaceHV = value; }
+        public Vector2 MaxSlotsHV { get => _maxHV; set => _maxHV = value; }
 
 
 
         private void Start()
         {
+            if (ParentObject == null) throw new System.Exception("Need to specify Parent Object field");
             ArrangeChildren();
             OnChildrenChanged.AddListener(ArrangeChildren);
 
@@ -52,21 +51,21 @@ namespace Scripts.MainframeReference
                 {
                     case XYZ.xy:
                         //check if space to the "X" is available
-                        if (_hcount < MaxSlotsH)
+                        if (_hcount < MaxSlotsHV.x)
                         {
 
-                            newX = _children[i - 1].localPosition.x + _spaceH; //set previous X + Hspacing
+                            newX = _children[i - 1].localPosition.x + _spaceHV.x; //set previous X + Hspacing
                             newY = _children[i - 1].localPosition.y; //sets previous Y
 
                             _hcount++; //move 1 space to the "X"
                         }
-                        else if (_vcount < MaxSlotsV)  //when not space to the right available
+                        else if (_vcount < MaxSlotsHV.y)  //when not space to the right available
                         {//check if space to the "Y" is available
 
                             _hcount = 1;//move to 1st space in "X"
 
                             newX = _children[0].localPosition.x; //set X == to first item
-                            newY = _children[i - 1].localPosition.y + _spaceV; //set previous Y + Yspacing                            
+                            newY = _children[i - 1].localPosition.y + _spaceHV.y; //set previous Y + Yspacing                            
 
                             _vcount++;//move 1 space to the "Y"
                         }
@@ -82,21 +81,21 @@ namespace Scripts.MainframeReference
                     case XYZ.zy:
 
                         //check if space to the "X" is available
-                        if (_hcount < MaxSlotsH)
+                        if (_hcount < MaxSlotsHV.x)
                         {
 
-                            newX = _children[i - 1].localPosition.z + _spaceH; //set previous X + Hspacing
+                            newX = _children[i - 1].localPosition.z + _spaceHV.x; //set previous X + Hspacing
                             newY = _children[i - 1].localPosition.y; //sets previous Y
 
                             _hcount++; //move 1 space to the "X"
                         }
-                        else if (_vcount < MaxSlotsV)  //when not space to the right available
+                        else if (_vcount < MaxSlotsHV.y)  //when not space to the right available
                         {//check if space to the "Y" is available
 
                             _hcount = 1;//move to 1st space in "X"
 
                             newX = _children[0].localPosition.z; //set X == to first item
-                            newY = _children[i - 1].localPosition.y + _spaceV; //set previous Y + Yspacing                            
+                            newY = _children[i - 1].localPosition.y + _spaceHV.y; //set previous Y + Yspacing                            
 
                             _vcount++;//move 1 space to the "Y"
                         }
@@ -112,21 +111,21 @@ namespace Scripts.MainframeReference
                         break;
                     case XYZ.xz:
                         //check if space to the "X" is available
-                        if (_hcount < MaxSlotsH)
+                        if (_hcount < MaxSlotsHV.x)
                         {
 
-                            newX = _children[i - 1].localPosition.x + _spaceH; //set previous X + Hspacing
+                            newX = _children[i - 1].localPosition.x + _spaceHV.x; //set previous X + Hspacing
                             newY = _children[i - 1].localPosition.z; //sets previous Y
 
                             _hcount++; //move 1 space to the "X"
                         }
-                        else if (_vcount < MaxSlotsV)  //when not space to the right available
+                        else if (_vcount < MaxSlotsHV.y)  //when not space to the right available
                         {//check if space to the "Y" is available
 
                             _hcount = 1;//move to 1st space in "X"
 
                             newX = _children[0].localPosition.x; //set X == to first item
-                            newY = _children[i - 1].localPosition.z + _spaceV; //set previous Y + Yspacing                            
+                            newY = _children[i - 1].localPosition.z + _spaceHV.y; //set previous Y + Yspacing                            
 
                             _vcount++;//move 1 space to the "Y"
                         }
@@ -143,6 +142,8 @@ namespace Scripts.MainframeReference
                 }
 
             }
+
+
         }
 
         private void Overflow(Transform transform)
@@ -155,8 +156,17 @@ namespace Scripts.MainframeReference
             ArrangeChildren();
         }
 
-        public void Add(Transform t) { _children.Add(t); OnChildrenChanged?.Invoke(); }
-        public void Remove(Transform t) { _children.Remove(t); OnChildrenChanged?.Invoke(); }
+        public void Add(Transform t) 
+        {
+            _children.Add(t);
+            t.parent = ParentObject;
+            OnChildrenChanged?.Invoke(); 
+        }
+        public void Remove(Transform t) 
+        {
+            _children.Remove(t); 
+            OnChildrenChanged?.Invoke();
+        }
 
     }
 

@@ -8,13 +8,13 @@ namespace Scripts.MainframeReference
         public bool _highlightEnabled = true;
         public UnityEvent actionOnHighlight, actionOnHighlightLoss;
         
-        public bool IsHighlighted => Mainframe.Highlighted == (IHighlightable)this;
+        public bool IsHighlighted => SelectionManager.Highlighted == (IHighlightable)this;
 
         protected override void Awake() 
         {
             base.Awake();
-            Mainframe.ControlHighlighted += OnHighlight;
-            Mainframe.ControlLostHighlight += OnHighlightLoss;
+            SelectionManager.ControlHighlighted += OnHighlight;
+            SelectionManager.ControlLostHighlight += OnHighlightLoss;
         }
 
         protected virtual void OnHighlight(IHighlightable obj)

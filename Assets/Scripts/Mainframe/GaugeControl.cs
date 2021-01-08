@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Scripts.MainframeReference
 {
-    public class GaugeControl : MonoBehaviour, IGauge
+    public class GaugeControl : MonoBehaviour
     {
         [SerializeField] private TMPro.TMP_Text _label, _current, _max;
 

@@ -15,11 +15,15 @@ namespace Scripts.MainframeReference
             RightDown, RightUp, 
             MidDown, MidUp;
 
+        /// <summary>
+        /// Repeats every frame
+        /// </summary>
+        public UnityEvent WhileMouseMoving;
         public UnityEvent 
-            actionOnMouseMoving, actionOnMovingStarted, actionOnMouseStop, 
-            actionOnLMBDown, actionOnLMBUp,
-            actionOnRMBDown, actionOnRMBUp, 
-            actionOnMMBDown, actionOnMMBUp;
+            OnMovingStarted, OnMouseStop, 
+            OnLMBDown, OnLMBUp,
+            OnRMBDown, OnRMBUp, 
+            OnMMBDown, OnMMBUp;
 
 
         private static Vector3 m_lastPos, m_currPos;
@@ -92,9 +96,9 @@ namespace Scripts.MainframeReference
             if (!Singleton) Singleton = this;
             else Destroy(gameObject);
 
-            MouseMoving += OnMouseMoving;
-            MovingStarted += OnMovingStarted;
-            MouseStopped += OnMouseStop;
+            MouseMoving += Mouse_Moving;
+            MovingStarted += StartedMoving;
+            MouseStopped += MouseStop;
             LeftDown += OnLD;
             LeftUp += OnLU;
             RightDown += OnRD;
@@ -103,15 +107,15 @@ namespace Scripts.MainframeReference
             MidUp += OnMU;
         }
 
-        private void OnMovingStarted() => actionOnMovingStarted?.Invoke();
-        private void OnMouseMoving() => actionOnMouseMoving?.Invoke();
-        private void OnMouseStop() => actionOnMouseStop?.Invoke();
-        private void OnLD() => actionOnLMBDown?.Invoke();
-        private void OnLU() => actionOnLMBUp?.Invoke();
-        private void OnRD() => actionOnRMBDown?.Invoke();
-        private void OnRU() => actionOnRMBUp?.Invoke();
-        private void OnMD() => actionOnMMBDown?.Invoke();
-        private void OnMU() => actionOnMMBUp?.Invoke();
+        private void StartedMoving() => OnMovingStarted?.Invoke();
+        private void Mouse_Moving() => WhileMouseMoving?.Invoke();
+        private void MouseStop() => OnMouseStop?.Invoke();
+        private void OnLD() => OnLMBDown?.Invoke();
+        private void OnLU() => OnLMBUp?.Invoke();
+        private void OnRD() => OnRMBDown?.Invoke();
+        private void OnRU() => OnRMBUp?.Invoke();
+        private void OnMD() => OnMMBDown?.Invoke();
+        private void OnMU() => OnMMBUp?.Invoke();
 
         private void Update()
         {

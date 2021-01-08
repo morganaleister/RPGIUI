@@ -6,12 +6,12 @@ namespace Scripts.MainframeReference
     public class HighlightableObject : MonoBehaviour, IHighlightable
     {
         public UnityEvent actionOnHighlight, actionOnHighlightLoss;
-        public bool IsHighlighted => Mainframe.Highlighted ==(IHighlightable)this;
+        public bool IsHighlighted => SelectionManager.Highlighted ==(IHighlightable)this;
 
         void Awake()
         {
-            Mainframe.ControlHighlighted += OnHighlight;
-            Mainframe.ControlLostHighlight += OnHighlightLoss;
+            SelectionManager.ControlHighlighted += OnHighlight;
+            SelectionManager.ControlLostHighlight += OnHighlightLoss;
         }
 
         protected virtual void OnHighlight(IHighlightable obj)

@@ -1,4 +1,4 @@
-﻿using Scripts.MainframeReference.CustomDebugger;
+﻿using Scripts.MainframeReference.Debug;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,12 +8,12 @@ namespace Scripts.MainframeReference
     {
         public bool _pressEnabled = true;
         public UnityEvent actionOnPress, actionOnRelease;
-        public bool IsPressed => Mainframe.Pressed == (IPressable)this;
+        public bool IsPressed => SelectionManager.Pressed == (IPressable)this;
 
         protected virtual void Awake()
         {
-            Mainframe.ControlPressed += OnPress;
-            Mainframe.ControlReleased += OnRelease;
+            SelectionManager.ControlPressed += OnPress;
+            SelectionManager.ControlReleased += OnRelease;
         }
         protected virtual void OnPress(IPressable obj)
         {
@@ -27,7 +27,5 @@ namespace Scripts.MainframeReference
 
             
         }
-
-
     }
 }

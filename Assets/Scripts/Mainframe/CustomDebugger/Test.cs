@@ -1,7 +1,7 @@
 ﻿using UnityEngine.Events;
 using UnityEngine;
 
-namespace Scripts.MainframeReference.CustomDebugger
+namespace Scripts.MainframeReference.Debug
 {
     public class Test : MonoBehaviour
     {
@@ -9,7 +9,7 @@ namespace Scripts.MainframeReference.CustomDebugger
 
         
 
-        public static void Print(string text) => Debug.Log(text);
+        public static void Print(string text) => UnityEngine.Debug.Log(text);
 
         public void TestThrowsToGet()
         {
@@ -27,7 +27,7 @@ namespace Scripts.MainframeReference.CustomDebugger
                 string text = string.Format("Throws to get {0}: {1}", i, ttg);
 
 
-                Debug.Log(text);
+                UnityEngine.Debug.Log(text);
             }
             
         }

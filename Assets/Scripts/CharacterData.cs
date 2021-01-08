@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Scripts.MainframeReference;
 
 namespace Scripts
 {
@@ -13,6 +14,9 @@ namespace Scripts
 
         public PlayerHead head;
         public Sprite sprite;
+
+        public Effect[] _effects;
+        public Gauge[] _gauges;
 
     }
 }

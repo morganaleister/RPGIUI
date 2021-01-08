@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-namespace Scripts.MainframeReference.CustomDebugger
+namespace Scripts.MainframeReference.Debug
 {
     [CustomEditor(typeof(Test))]
     public class TestCustomEditor : Editor

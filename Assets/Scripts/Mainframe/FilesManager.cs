@@ -81,11 +81,11 @@ namespace Scripts.MainframeReference
                     "Will be created and used from now on. " +
                     "Contents on another directory wont be loaded", saveDir);
 
-                Debug.LogWarning(m);
+                UnityEngine.Debug.LogWarning(m);
                 Directory.CreateDirectory(saveDir);
             }
 
-            Debug.Log("SaveDirectory: " + saveDir);
+            UnityEngine.Debug.Log("SaveDirectory: " + saveDir);
 
             if (File.Exists(fullSavePath) && !overwrite)
                 return false;
