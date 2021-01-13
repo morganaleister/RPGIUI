@@ -2,13 +2,15 @@
 using System.Globalization;
 using System;
 using System.Text;
+using Scripts.MainframeReference;
 
 namespace Scripts
 {
     [System.Serializable]
-    public class BaseObject : MonoBehaviour
+    public abstract class BaseObject : MonoBehaviour
     {
         private int _id;
+
         public virtual int ID { get => _id; protected set => _id = value; }
         public virtual void SetNewID() => SetID(CreateID(gameObject.name));
 

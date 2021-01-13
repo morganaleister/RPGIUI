@@ -3,14 +3,14 @@ using UnityEditor;
 
 namespace Scripts.MainframeReference.Debug
 {
-    [CustomEditor(typeof(Test))]
+    [CustomEditor(typeof(TesterClass))]
     public class TestCustomEditor : Editor
     {
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
 
-            if (GUILayout.Button("Test!")) ((Test)target).onTest?.Invoke();            
+            if (GUILayout.Button("Excecute")) ((TesterClass)target).ExcecuteTask?.Invoke();            
         }
     }
 }

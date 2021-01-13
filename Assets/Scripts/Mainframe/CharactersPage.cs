@@ -8,7 +8,7 @@ namespace Scripts.MainframeReference
     {
        [SerializeField] private GameObject _loadCharacterPrefab;
         
-        private CharacterData[] _availableCharacters;
+        private CharData[] _availableCharacters;
 
        
         
@@ -25,7 +25,7 @@ namespace Scripts.MainframeReference
             if (_availableCharacters != null && !refresh) return;
             
             var path = FilesManager.PathTo("Characters");
-            List<CharacterData> charDatas = new List<CharacterData>();
+            List<CharData> charDatas = new List<CharData>();
 
             if (Directory.Exists(path))
             {
@@ -55,7 +55,6 @@ namespace Scripts.MainframeReference
 
                 ctrl.Label = ch.GetFullName();
                 ctrl.Value = ch.GetFileName();
-                ctrl.Sprite = ch.GetCharacterData().sprite;
 
 
 

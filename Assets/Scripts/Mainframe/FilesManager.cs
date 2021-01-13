@@ -36,9 +36,9 @@ namespace Scripts.MainframeReference
             _savesPath = Application.persistentDataPath;
         }
 
-        public static CharacterData Load(FileEncoding fileType, string fullPath)
+        public static CharData Load(FileEncoding fileType, string fullPath)
         {
-            CharacterData charData = new CharacterData();
+            CharData charData = new CharData();
 
             using (FileStream fs = new FileStream(fullPath, FileMode.Open))
             using (StreamReader sr = new StreamReader(fs))
@@ -48,12 +48,12 @@ namespace Scripts.MainframeReference
                     case FileEncoding.binary:
 
                         BinaryFormatter bf = new BinaryFormatter();
-                        charData = (CharacterData)bf.Deserialize(fs);
+                        charData = (CharData)bf.Deserialize(fs);
                         break;
                     case FileEncoding.Json:
 
                         string json = sr.ReadToEnd();
-                        charData = JsonUtility.FromJson<CharacterData>(json);
+                        charData = JsonUtility.FromJson<CharData>(json);
                         break;
                 }
             }

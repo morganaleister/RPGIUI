@@ -8,7 +8,7 @@ namespace Scripts.MainframeReference
     [CreateAssetMenu(fileName = "new Effect", menuName = "ScriptableObjects/Effect")]
     public class Effect : ScriptableObject
     {
-        string 
+         
 
     }
 }

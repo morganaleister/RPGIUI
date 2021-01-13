@@ -8,8 +8,7 @@ namespace Scripts.MainframeReference
     public class AutoSorter : MonoBehaviour
     {
         public UnityEvent OnChildrenChanged;
-        public Transform ParentObject;
-        
+        public Transform ParentObject;        
 
         public enum XYZ { xy, zy, xz }
 
@@ -171,5 +170,5 @@ namespace Scripts.MainframeReference
     }
 
 
-
+ 
 }

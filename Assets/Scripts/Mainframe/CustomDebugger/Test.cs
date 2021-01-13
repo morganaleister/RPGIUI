@@ -1,13 +1,10 @@
 ﻿using UnityEngine.Events;
-using UnityEngine;
 
 namespace Scripts.MainframeReference.Debug
 {
-    public class Test : MonoBehaviour
+    public class Test : TesterClass
     {
-        public UnityEvent onTest;
-
-        
+        public UnityEvent onTest;       
 
         public static void Print(string text) => UnityEngine.Debug.Log(text);
 

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using UnityEngine.Events;
 using Scripts.MainframeReference;
 using System;
 
@@ -7,12 +7,17 @@ namespace Scripts
     [Serializable]
     public class Character : BaseObject
     {
-        public static event Action<Character, string, float> AttributeValueChanged;
-        public static event Action<Character, string, string> StringValueChanged;
 
-        public override int ID { get => _characterData._id; protected set => _characterData._id = value; }
+        public Informant AttributeValueChanged;
+        public Informant StringValueChanged;
 
-        private CharacterData _characterData = new CharacterData();
+        private CharData _characterData = new CharData();
+
+        public override int ID 
+        { 
+            get => _characterData._id; 
+            protected set => _characterData._id = value; 
+        }        
 
         public void Awake()
         {
@@ -42,30 +47,14 @@ namespace Scripts
         /// Returns a copy of the CharacterData in current use by the Character object.
         /// </summary>
         /// <returns></returns>
-        public CharacterData GetCharacterData()
+        public CharData GetCharacterData()
         {
             var ret = _characterData;
             return ret;
         }
-        public void SetCharacterData(CharacterData newData) => _characterData = newData;
+        public void SetCharacterData(CharData newData) => _characterData = newData;
 
         
-        protected override int CreateID(string seed)
-        {
-            int id = base.CreateID(seed);
-
-            int[] attr = _characterData._attributesValues;
-            int sum = 0;
-
-            for (int i = 0; i < attr.Length; i++)
-            {
-                sum += (int)attr[i] * (i + 1);
-            }
-
-            id += sum;
-
-            return id;
-        }
         public override void SetNewID() => SetID(CreateID(GetExportFileName()));
         private string GetExportFileName()
         {
@@ -99,22 +88,25 @@ namespace Scripts
             }
             throw new System.ArgumentOutOfRangeException();
         }
-        public void SetStringValue(string stringName, string stringValue)
+        public void SetStringValue(string stringName, string newValue)
         {
-            int index = -1;
+            int indexToModify = -1;
             for (int i = 0; i < Mainframe.CharStrings.Count; i++)
             {
                 if (Mainframe.CharStrings.Keys[i] == stringName)
                 {
-                    index = i;
+                    indexToModify = i;
                     break;
                 }
             }
-            if (index < 0) return;
-            if (_characterData._stringValues[index] != stringValue)
+            if (indexToModify < 0) return;
+            if (_characterData._stringValues[indexToModify] != newValue)
             {
-                _characterData._stringValues[index] = stringValue;
-                StringValueChanged?.Invoke(this, stringName, stringValue);
+                CharacterUpdate updatedata = new CharacterUpdate
+                    (this, stringName, _characterData._stringValues[indexToModify], newValue);
+
+                _characterData._stringValues[indexToModify] = newValue;
+                StringValueChanged?.Invoke(updatedata);
             }
         }
         public void SetStringValue(int stringIndex, string stringValue)
@@ -136,29 +128,34 @@ namespace Scripts
             }
             throw new System.ArgumentOutOfRangeException();
         }
-        public void SetAttributeValue(string attributeName, int value)
+        public void SetAttributeValue(string attributeName, int newValue)
         {
-            int index = -1;
+            int indexToModify = -1;
 
             for (int i = 0; i < Mainframe.CharAttributes.Count; i++)
             {
                 if (Mainframe.CharAttributes.Values[i] == attributeName)
                 {
-                    index = i;
+                    indexToModify = i;
                     break;
                 }
             }
-            if (index < 0) return;
+            if (indexToModify < 0) return;
 
-            if (_characterData._attributesValues[index] != value)
+            if (_characterData._attributesValues[indexToModify] != newValue)
             {
-                _characterData._attributesValues[index] = value;
-                AttributeValueChanged?.Invoke(this, attributeName, value);
+                CharacterUpdate updatedata = new CharacterUpdate
+                    (this, attributeName, 
+                    _characterData._attributesValues[indexToModify].ToString(),
+                    newValue.ToString());
+
+                _characterData._attributesValues[indexToModify] = newValue;
+                AttributeValueChanged?.Invoke(updatedata);
             }
         }
 
 
-        public static implicit operator CharacterData(Character character) => character.GetCharacterData();
+        public static implicit operator CharData(Character character) => character.GetCharacterData();
 
         public void SetTempattrval() => SetAttributeValue(Mainframe.CharAttributes.Values[UnityEngine.Random.Range(0, 8 + 1)], UnityEngine.Random.Range(0, 12 + 1));
 
