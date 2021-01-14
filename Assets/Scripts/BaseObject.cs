@@ -9,28 +9,41 @@ namespace Scripts
     [System.Serializable]
     public abstract class BaseObject : MonoBehaviour
     {
-        private int _id;
+        BaseObjectSaveData _saveData;
 
-        public virtual int ID { get => _id; protected set => _id = value; }
-        public virtual void SetNewID() => SetID(CreateID(gameObject.name));
+        public virtual int ID 
+        { 
+            get => _saveData._id; 
+            protected set => _saveData._id = value; 
+        }
+
+        public virtual string Name         
+        { 
+            get => _saveData._name;  
+            set => _saveData._name = value; 
+        }
+
+        public virtual void SetNewID() => SetID(CreateID(Name));
 
         protected virtual int CreateID(string idSeed)
         {
+            if (idSeed == string.Empty)
+                throw new ArgumentNullException("Field 'idSeed' can't be empty. CreateID Failed.");
 
-            char[] cc = idSeed.ToLowerInvariant().Trim().Replace(" ", "_").ToCharArray();
-            byte[] ascii = Encoding.ASCII.GetBytes(cc);
+            char[] chArray = idSeed.ToLowerInvariant().Trim().Replace(" ", "_").ToCharArray();
+            byte[] chARRscii = Encoding.ASCII.GetBytes(chArray);
 
-            int ret = cc.Length ^ 2;
+            int ret = chArray.Length ^ 2;
             int last;
 
-            for (int i = 0; i < cc.Length; i++)
+            for (int i = 0; i < chArray.Length; i++)
             {
-                int unicode = ascii[i];
+                int unicodeValue = chARRscii[i];
 
                 if (i == 0) last = 0;
-                else last = ascii[i];
+                else last = chARRscii[i - 1];
 
-                ret += (unicode * (i + 1)) - last;
+                ret += (unicodeValue * (i + 1)) - last;
             }
 
             return ret;

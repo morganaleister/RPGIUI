@@ -21,7 +21,7 @@ namespace Scripts
 
         public bool Remove(T1 key)
         {
-            if(_keys.Count > 0)
+            if (_keys.Count > 0)
             {
 
                 for (int i = 0; i < _keys.Count; i++)
@@ -36,6 +36,41 @@ namespace Scripts
             }
             return false;
         }
+
+        public bool TryGetValue(T1 key, out T2 value)
+        {
+            for (int i = 0; i < _keys.Count; i++)
+            {
+                if (_keys[i].Equals(key))
+                {
+                    value = _values[i];
+                    return true;
+                }
+            }
+
+            value = default;
+            return false;
+        }
+
+        public bool TryGetIndex (T1 key, out int index)
+        {
+            for (int i = 0; i < _keys.Count; i++)
+            {
+                if (_keys[i].Equals(key))
+                {
+                    index = i;
+                    return true;
+                }
+            }
+
+            index = -1;
+            return false;
+        }
+
+        public T1 GetKey(int index) => _keys[index];
+
+        public T2 this[int index] { get => _values[index]; }
+        
 
     }
 }

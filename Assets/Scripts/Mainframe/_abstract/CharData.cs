@@ -4,7 +4,7 @@ using Scripts.MainframeReference;
 namespace Scripts.MainframeReference
 {
     [System.Serializable]
-    public class CharData : SaveData
+    public class CharData : BaseObjectSaveData
     {
                 
         public int[] _attributesValues;

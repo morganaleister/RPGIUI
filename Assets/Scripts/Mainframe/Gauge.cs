@@ -6,21 +6,19 @@ namespace Scripts.MainframeReference
     /// A labeled float-pair field where one field dictates the max value of another, and that one also can't go below 0
     /// </summary>
     [System.Serializable]
-    public class Gauge : MonoBehaviour
+    public class Gauge
     {
         public Informant OnValueChanged;
 
         public string _type;
-        [SerializeField] private bool _uflow, _oflow;
-        [SerializeField] private float _max;
-        [SerializeField]
-        private float
-            _current = 0;
+        [SerializeField] private bool _underflow = false, _overflow = false;
+        [SerializeField] private float _max = 0;
+        [SerializeField] private float _current = 0;
 
-        public string Type { get; set; }
-        public bool Underflow { get; set; }
-        public bool Overflow { get; set; }
-        public float Max { get; set; }
+        public string Type { get => _type; set => _type = value; }
+        public bool Underflow { get => _underflow; set => _underflow = value; }
+        public bool Overflow { get => _overflow; set => _overflow = value; }
+        public float Max { get => _max; set => _max = value; }
 
         public float Current
         {
@@ -31,32 +29,43 @@ namespace Scripts.MainframeReference
 
                 UpdateData update = new UpdateData(this, Normalized.ToString());
 
-                if (value > 0 && value <= Max)
-                {
-                    _current = value;
-                    goto inform_current;
-                } //if in range, skip other checks
-
                 if (value < 0)
-                {
+                {   //if below range check option and proceed
                     if (Underflow) _current = value;
                     else _current = 0;
                 }
-                if (value > Max)
-                {
+                else if (value > Max)
+                { //if abvove range check option and proceed
                     if (Overflow) _current = value;
                     else _current = Max;
                 }
-
-            inform_current:
-                update._newValue = Normalized.ToString();
-                OnValueChanged?.Invoke(update);                
+                else //if in range, proceed.
+                {
+                    _current = value;
+                }
+                    update._newValue = Normalized.ToString();
+                    OnValueChanged?.Invoke(update);
+                
             }
         }     
         public float Normalized { get => _current / Max; }
+        public Vector2 Fraction { get => new Vector2(Current, Max); }
 
         public static implicit operator float(Gauge gauge) { return gauge._current; }
 
-    }
 
+        public Gauge() { }
+        
+        public Gauge(float current, float max, bool underflow = false, bool overflow = false)         
+        {
+            Underflow = underflow;
+
+            Overflow = overflow;
+
+            Max = max; 
+
+            Current = current; 
+        }
+
+    }
 }
