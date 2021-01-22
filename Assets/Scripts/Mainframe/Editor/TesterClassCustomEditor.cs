@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-namespace Scripts.MainframeReference.Debug
+namespace Scripts.Mainframe.Debuggering
 {
     [CustomEditor(typeof(TesterClass))]
-    public class TestCustomEditor : Editor
+    public class TesterClassCustomEditor : Editor
     {
         public override void OnInspectorGUI()
         {

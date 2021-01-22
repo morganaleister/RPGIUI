@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     [ExecuteAlways()]
     public class ColorSyncronizer : MonoBehaviour

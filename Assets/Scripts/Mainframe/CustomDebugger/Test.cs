@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Events;
 
-namespace Scripts.MainframeReference.Debug
+namespace Scripts.Mainframe.Debuggering
 {
     public class Test : TesterClass
     {

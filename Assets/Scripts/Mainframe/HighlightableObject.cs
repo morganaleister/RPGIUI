@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     public class HighlightableObject : MonoBehaviour, IHighlightable
     {

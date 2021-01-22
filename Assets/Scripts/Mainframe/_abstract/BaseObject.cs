@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
-using System.Globalization;
 using System;
 using System.Text;
-using Scripts.MainframeReference;
+using Scripts.Mainframe;
 
 namespace Scripts
 {
     [System.Serializable]
     public abstract class BaseObject : MonoBehaviour
     {
-        BaseObjectSaveData _saveData;
+        SaveData _saveData = new SaveData();
 
         public virtual int ID 
         { 
@@ -19,8 +18,8 @@ namespace Scripts
 
         public virtual string Name         
         { 
-            get => _saveData._name;  
-            set => _saveData._name = value; 
+            get => _saveData._nameStrings[0];  
+            set => _saveData._nameStrings[0] = value; 
         }
 
         public virtual void SetNewID() => SetID(CreateID(Name));
@@ -49,6 +48,24 @@ namespace Scripts
             return ret;
         }
         protected virtual void SetID(int id) => ID = id;
-    }
 
+        protected BaseObject() 
+        { 
+            Name = "unnamed";
+            SetNewID();
+        }
+        protected BaseObject(string name = "unnamed")
+        {
+            Name = name;
+            SetNewID();
+        }
+
+        [System.Serializable]
+        public class SaveData
+        {
+            public int _id;
+            public string[] _nameStrings = new string[1];
+
+        }
+    }
 }

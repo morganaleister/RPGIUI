@@ -1,8 +1,8 @@
-﻿namespace Scripts
+﻿namespace Scripts.Mainframe
 {
     public class Item : BaseObject
     {
-        public string ItemName { get; set; }
+        public Item(string itemName) : base(itemName) { }
 
     }
     public interface IStackable

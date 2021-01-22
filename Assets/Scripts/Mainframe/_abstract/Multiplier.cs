@@ -1,4 +1,4 @@
-﻿namespace Scripts.MainframeReference
+﻿namespace Scripts.Mainframe
 {
     public enum Multiplier
     {

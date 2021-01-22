@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     [ExecuteAlways()]
     public class AutoSorter : MonoBehaviour

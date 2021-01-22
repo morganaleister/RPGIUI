@@ -1,7 +1,7 @@
 ﻿using UnityEngine.Events;
 using UnityEngine;
 
-namespace Scripts.MainframeReference.Debug
+namespace Scripts.Mainframe.Debuggering
 {
     public class TesterClass : MonoBehaviour
     {

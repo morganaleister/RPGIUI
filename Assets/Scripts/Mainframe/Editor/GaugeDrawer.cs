@@ -1,200 +1,245 @@
-﻿using UnityEditor;
+﻿using Scripts.Mainframe;
+using UnityEditor;
 using UnityEngine;
 
-namespace Scripts.MainframeReference
+[CustomPropertyDrawer(typeof(Gauge))]
+public class GaugeDrawer : PropertyDrawer
 {
-    [CustomPropertyDrawer(typeof(Gauge))]
-    public class GaugeDrawer : PropertyDrawer
+    private SerializedProperty typeSlzdProp, currentSlzdProp, maxSlzdProp, underflowSlzdProp, overflowSlzdProp;
+    private string typeValue;
+    private bool foldout = false;
+
+    private float lineHeight, labelWidth;
+    private readonly float vspace = 2f;
+    private readonly float hoffset = 22f;
+    private float currentWidth, currentIndent;
+
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        SerializedProperty typeSlzdProp, currentSlzdProp, maxSlzdProp, underflowSlzdProp, overflowSlzdProp;
-        string typeValue;
-        float currentValue, maxValue;
-        bool underflowValue, overflowValue;
-        bool foldout = true;
 
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        lineHeight = EditorGUIUtility.singleLineHeight;
+        labelWidth = EditorGUIUtility.labelWidth;
+        currentWidth = EditorGUIUtility.currentViewWidth;
+        currentIndent = EditorGUI.IndentedRect(position).x - position.x - vspace;
+
+        Initialize(property);
+        string titleText = string.Format("{0} ({1})", typeValue, property.type);
+
+        //sets the Rect to draw the foldout title
+        var leftPos = new Rect(EditorGUI.IndentedRect(position).x, position.y, currentWidth - currentIndent - hoffset, lineHeight);
+        //EditorGUI.DrawRect(r, Color.white);
+
+        foldout = EditorGUI.BeginFoldoutHeaderGroup(leftPos, foldout, titleText);
         {
-            Rect newPos = new Rect(position.x, position.y + 4, position.width, position.height);
-
-            EditorGUI.BeginProperty(position, label, property);            
-
-            EditorGUI.DrawRect(newPos, Color.Lerp(Color.white, Color.black, 0.8f));
-
-            newPos = new Rect(position.x, newPos.y, 300, 100);            
-
-            newPos = new Rect(position.x + 10, newPos.y, 322, 15);
-
-            foldout = EditorGUI.BeginFoldoutHeaderGroup(newPos, foldout, GUIContent.none);
-
-            newPos = DrawTitleLabel(property, newPos);
-
-            EditorGUI.EndFoldoutHeaderGroup();
-
+            //EditorGUI.DrawRect(position, Color.black);
+            DrawProgressBar(position);
             if (foldout)
             {
+                var indentLvl = EditorGUI.indentLevel;
+                EditorGUI.indentLevel = 1;
+                bool underfoverf = true;
 
-                newPos = DrawTypeTextField(newPos);
+                DrawTypeTextField(leftPos, position);
 
-                newPos = DrawUnderOverFlows(property, newPos);
+                DrawValueElement(leftPos, 2,
+                    maxSlzdProp.displayName, maxSlzdProp.floatValue,
+                    overflowSlzdProp.displayName, overflowSlzdProp.boolValue,
+                    underfoverf);
 
-                newPos = DrawCurrentMax(property, newPos);
+                underfoverf = false;
+                
+                DrawValueElement(leftPos, 3,
+                    currentSlzdProp.displayName, currentSlzdProp.floatValue,
+                    underflowSlzdProp.displayName, underflowSlzdProp.boolValue,
+                    underfoverf);
 
-                newPos = new Rect(newPos.x, newPos.y + 22, newPos.width, 18);
-                DrawProgressBar(newPos);
-
-            }
-            else
-            {
-                newPos = new Rect(newPos.x, newPos.y + 25, newPos.width, 18);
-                DrawProgressBar(newPos);
-            }
-
-            EditorGUI.EndProperty();
-        }
-
-        private void DrawProgressBar(Rect position)
-        {
-            Gauge value = UpdateCurrent(currentSlzdProp.floatValue);
-            string fraction = string.Format("{0} / {1}", value.Fraction.x, value.Fraction.y);
-
-
-            EditorGUI.ProgressBar(position, value.Normalized, fraction);
-        }
-
-        private Rect DrawTitleLabel(SerializedProperty property, Rect position)
-        {
-
-            typeSlzdProp = property.FindPropertyRelative("_type");
-            typeValue = typeSlzdProp.stringValue.Trim();
-
-            string titleText = string.Format("{0} ({1})", typeValue, property.type);
-            GUIStyle titleStyle = new GUIStyle();
-            {
-
-                titleStyle.fontSize = 12;
-                titleStyle.fontStyle = FontStyle.Bold;
-                titleStyle.normal.textColor = Color.white;
+                EditorGUI.indentLevel = indentLvl;
             }
 
-            Rect newPos = new Rect(position.x + 2, position.y + 1, 300, 25);
-            EditorGUI.LabelField(newPos, titleText, titleStyle);
-
-            return new Rect(newPos.x, position.y, 300, 25);
         }
-        private Rect DrawTypeTextField(Rect position)
-        {
-            int indent = 10;
-            Rect newPos = new Rect(position.x + indent, position.y + 25 + 2, 50, 18);
-            EditorGUI.LabelField(newPos, typeSlzdProp.displayName);
-
-            newPos = new Rect(newPos.x + newPos.width, newPos.y, 250, 18);
-
-            EditorGUI.BeginChangeCheck();
-            var stringValue = EditorGUI.TextField(newPos, typeValue);
-            if (EditorGUI.EndChangeCheck())
-                typeSlzdProp.stringValue = stringValue;
-
-            return new Rect(position.x + indent, position.y + position.height, 300, 18);
-        }
-        private Rect DrawUnderOverFlows(SerializedProperty property, Rect position)
-        {
-            underflowSlzdProp = property.FindPropertyRelative("_underflow");
-            overflowSlzdProp = property.FindPropertyRelative("_overflow");
-
-            underflowValue = underflowSlzdProp.boolValue;
-            overflowValue = overflowSlzdProp.boolValue;
-
-            EditorGUI.BeginChangeCheck();
-
-            Rect newPos = new Rect(position.x, position.y + position.height + 8, 150f, position.height);
-            var boolValue = EditorGUI.Toggle(newPos, underflowSlzdProp.displayName, underflowValue);
-
-            if (EditorGUI.EndChangeCheck())
-            {
-                underflowSlzdProp.boolValue = boolValue;
-                UpdateCurrent(currentSlzdProp.floatValue);
-            }
+        EditorGUI.EndFoldoutHeaderGroup();
 
 
-            EditorGUI.BeginChangeCheck();
-
-            newPos = new Rect(newPos.x + newPos.width, newPos.y, 150f, position.height);
-            boolValue = EditorGUI.Toggle(newPos, overflowSlzdProp.displayName, overflowValue);
-
-            if (EditorGUI.EndChangeCheck())
-            {
-
-                overflowSlzdProp.boolValue = boolValue;
-                UpdateCurrent(currentSlzdProp.floatValue);
-            }
-
-
-            return new Rect(position.x, newPos.y, 300, newPos.height);
-        }
-        private Rect DrawCurrentMax(SerializedProperty property, Rect position)
-        {
-            currentSlzdProp = property.FindPropertyRelative("_current");
-            maxSlzdProp = property.FindPropertyRelative("_max");
-
-            currentValue = currentSlzdProp.floatValue;
-            maxValue = maxSlzdProp.floatValue;
-
-
-            Rect newPos = new Rect(position.x, position.y + position.height + 4, 50f, position.height);
-            EditorGUI.LabelField(newPos, currentSlzdProp.displayName + ":");
-
-            newPos = new Rect(newPos.x + newPos.width, newPos.y, 100, 18);
-
-            EditorGUI.BeginChangeCheck();
-            var floatValue = float.Parse(EditorGUI.TextField(newPos, currentValue.ToString()));
-            if (EditorGUI.EndChangeCheck())
-                UpdateCurrent(floatValue);
-
-
-
-            newPos = new Rect(newPos.x + newPos.width, newPos.y, 15f, position.height);
-            EditorGUI.LabelField(newPos, "  / ");
-
-
-
-            newPos = new Rect(newPos.x + newPos.width, newPos.y, 35f, position.height);
-            EditorGUI.LabelField(newPos, maxSlzdProp.displayName + ":");
-
-            newPos = new Rect(newPos.x + newPos.width, newPos.y, 100f, position.height);
-
-            EditorGUI.BeginChangeCheck();
-            floatValue = float.Parse(EditorGUI.TextField(newPos, maxValue.ToString()));
-            if (EditorGUI.EndChangeCheck())
-            {
-                maxSlzdProp.floatValue = floatValue;
-                UpdateCurrent(currentSlzdProp.floatValue);
-            }
-
-
-            return new Rect(position.x, newPos.y, 300, newPos.height);
-
-        }
-
-        private Gauge UpdateCurrent(float newCurrent)
-        {
-            Gauge check = new Gauge(
-                                newCurrent,
-                                maxSlzdProp.floatValue,
-                                underflowSlzdProp.boolValue,
-                                overflowSlzdProp.boolValue
-                                );
-
-            currentSlzdProp.floatValue = check.Current;
-
-            return check;
-        }
-
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-        {
-            if (foldout)
-                return 118f;
-            else
-                return 25 + 22;
-        }
     }
+    private void Initialize(SerializedProperty property)
+    {
+        typeSlzdProp = property.FindPropertyRelative("_type");
+        typeValue = typeSlzdProp.stringValue.Trim();
+
+        underflowSlzdProp = property.FindPropertyRelative("_underflow");
+        overflowSlzdProp = property.FindPropertyRelative("_overflow");
+        currentSlzdProp = property.FindPropertyRelative("_current");
+        maxSlzdProp = property.FindPropertyRelative("_max");
+    }
+    private void DrawProgressBar(Rect position)
+    {
+        //sets the Rect to draw the ProgressBar
+        var r = new Rect(
+            position.x + labelWidth,
+            position.y,
+            currentWidth - labelWidth - (currentIndent / EditorGUI.indentLevel) - hoffset,
+            lineHeight);
+
+        Gauge value = UpdateCurrent(currentSlzdProp.floatValue);
+        string display = string.Format("{0} / {1}", value.Fraction.x, value.Fraction.y);
+
+        EditorGUI.ProgressBar(r, value.Normalized, display);
+    }
+    private void DrawTypeTextField(Rect leftPos, Rect rightPos)
+    {
+        //Set the rect to draw the label
+        var r = new Rect(leftPos.x, leftPos.y + lineHeight + vspace, (labelWidth / 2), leftPos.height);
+        //EditorGUI.DrawRect(r, Color.green);
+
+        EditorGUI.LabelField(r, typeSlzdProp.displayName + ":");
+
+        //Set the rect to draw the textField
+        r = new Rect(r.x + (labelWidth / 2) + vspace, r.y, (labelWidth * 2) - hoffset, lineHeight);
+
+        //EditorGUI.DrawRect(r, Color.red);
+
+        EditorGUI.BeginChangeCheck();
+        var stringValue = EditorGUI.TextField(r, typeValue);
+        if (EditorGUI.EndChangeCheck())
+            typeSlzdProp.stringValue = stringValue;
+    }
+    private void DrawValueElement(Rect pos, int floor, 
+        string f_displayName, float f_value, 
+        string b_displayName, bool b_value,
+        bool underoverf)
+    {
+        var r = new Rect(pos.x, pos.y + (lineHeight * floor) + (vspace * floor), labelWidth, lineHeight);
+        //EditorGUI.DrawRect(r, Color.Lerp(Color.green, Color.black, .7f));
+        EditorGUI.LabelField(r, f_displayName + ":");
+
+        
+        r = new Rect(r.x + (labelWidth / 2) + vspace, r.y, labelWidth - hoffset, lineHeight);
+        //EditorGUI.DrawRect(r, Color.Lerp(Color.red, Color.black, .7f));
+
+        EditorGUI.BeginChangeCheck();
+
+        float floatValue = EditorGUI.FloatField(r, f_value);
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            switch (underoverf)
+            {
+                case false:
+                    currentSlzdProp.floatValue = floatValue;
+                    UpdateCurrent(floatValue);
+                    break;
+
+                case true:
+                    maxSlzdProp.floatValue = floatValue;
+                    UpdateCurrent(currentSlzdProp.floatValue);
+                    break;
+            }
+            
+        }
+
+        r = new Rect(r.x + r.width + vspace, r.y, labelWidth, r.height);
+        //EditorGUI.DrawRect(r, Color.Lerp(Color.yellow, Color.black, .7f));
+        EditorGUI.LabelField(r, b_displayName + ":");
+
+        r = new Rect(r.x + (labelWidth / 2) + vspace, r.y, 50f, r.height);
+        //EditorGUI.DrawRect(r, Color.Lerp(Color.blue, Color.white, .7f));
+
+        EditorGUI.BeginChangeCheck();
+        bool toggle = EditorGUI.Toggle(r, b_value);
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            switch (underoverf)
+            {
+                case false:
+                    underflowSlzdProp.boolValue = toggle;
+                    break;
+
+                case true:
+                    overflowSlzdProp.boolValue = toggle;
+                    break;
+            }
+            UpdateCurrent(currentSlzdProp.floatValue);
+        }        
+    }
+
+    //private void DrawCurrentMax(Rect leftPos)
+    //{
+    //    //set the space for the 1st label "current:"
+    //    var r = new Rect(leftPos.x, leftPos.y + (lineHeight * 3) + vspace, labelWidth, lineHeight);
+    //    //EditorGUI.DrawRect(r, Color.Lerp(Color.red, Color.black, .7f));
+
+    //    EditorGUI.LabelField(r, currentSlzdProp.displayName + ":");
+
+    //    //set the space for the 1st text field
+    //    r = new Rect(r.x + r.width + vspace - 100f, r.y, 150f, r.height);
+    //    //EditorGUI.DrawRect(r, Color.Lerp(Color.green, Color.black, .7f));
+
+    //    float floatValue = 0;
+
+    //    EditorGUI.BeginChangeCheck();
+    //    try
+    //    {
+    //        floatValue = float.Parse(
+    //            EditorGUI.TextField(r, currentValue.ToString()));
+    //    }
+    //    catch (System.Exception) { }
+
+    //    if (EditorGUI.EndChangeCheck())
+    //        UpdateCurrent(floatValue);
+
+
+    //    //set the space for the 2nd label "/"
+    //    r = new Rect(r.x + r.width + vspace, r.y, 15f, r.height);
+    //    //EditorGUI.DrawRect(r, Color.Lerp(Color.blue, Color.black, .3f));
+    //    EditorGUI.LabelField(r, "  / ");
+
+    //    //set the space for the 3rd label "max:"
+    //    r = new Rect(r.x + r.width + vspace, r.y, labelWidth, r.height);
+    //    //EditorGUI.DrawRect(r, Color.Lerp(Color.yellow, Color.black, .3f));
+    //    EditorGUI.LabelField(r, maxSlzdProp.displayName + ":");
+
+    //    //set the space for the 2nd text field
+    //    r = new Rect(r.x + r.width + vspace - 100f, r.y, 150f, r.height);
+    //    //EditorGUI.DrawRect(r, Color.Lerp(Color.red, Color.blue, .5f));
+
+
+    //    EditorGUI.BeginChangeCheck();
+
+    //    try
+    //    {
+    //        floatValue = float.Parse(
+    //            EditorGUI.TextField(r, maxValue.ToString()));
+    //    }
+    //    catch (System.Exception) { }
+
+    //    if (EditorGUI.EndChangeCheck())
+    //    {
+    //        maxSlzdProp.floatValue = floatValue;
+    //        UpdateCurrent(currentSlzdProp.floatValue);
+    //    }
+    //}
+
+    private Gauge UpdateCurrent(float newCurrent)
+    {
+        Gauge check = new Gauge("HP",
+                            newCurrent,
+                            maxSlzdProp.floatValue,
+                            underflowSlzdProp.boolValue,
+                            overflowSlzdProp.boolValue
+                            );
+
+        currentSlzdProp.floatValue = check.Current;
+
+        return check;
+    }
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        if (foldout)
+            return (lineHeight * 4) + (vspace * 5);
+        else
+            return lineHeight;
+    }
+
+
 }

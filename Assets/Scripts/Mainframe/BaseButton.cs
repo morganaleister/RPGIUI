@@ -1,8 +1,8 @@
-﻿using Scripts.MainframeReference.Debug;
+﻿using Scripts.Mainframe.Debuggering;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     public class BaseButton : MonoBehaviour, IPressable
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     public interface IHighlightable
     {

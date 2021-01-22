@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     [CustomEditor(typeof(BaseButton))]
     public class BaseButtonCustomEditor : Editor

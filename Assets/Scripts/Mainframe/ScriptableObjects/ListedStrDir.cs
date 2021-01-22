@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "new ListedStringDirectory", menuName = "ScriptableObjects/ListedStringDirectory")]
-    public class ListedStrDir : KeysList
+    [CreateAssetMenu(fileName = "new ListedStringDirectory", menuName = "ScriptableObjects/ListedStringDirectory(old)")]
+    public class ListedStrDir : ListedKeys
     {
         [SerializeField] private string[] _values;
         public string[] Values { get => _values; }
@@ -31,5 +31,4 @@ namespace Scripts.MainframeReference
             set => _values[index] = value;
         }
     }
-    
 }

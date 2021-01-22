@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     public class UpDownControl : ValueControl
     {
@@ -27,16 +27,16 @@ namespace Scripts.MainframeReference
         {
             switch (Multiplier)
             {
-                case MainframeReference.Multiplier.x1:
-                    Multiplier = MainframeReference.Multiplier.x10;
+                case Scripts.Mainframe.Multiplier.x1:
+                    Multiplier = Scripts.Mainframe.Multiplier.x10;
                     multiplierField.text = "10";
                     break;
-                case MainframeReference.Multiplier.x10:
-                    Multiplier = MainframeReference.Multiplier.x100;
+                case Scripts.Mainframe.Multiplier.x10:
+                    Multiplier = Scripts.Mainframe.Multiplier.x100;
                     multiplierField.text = "100";
                     break;
-                case MainframeReference.Multiplier.x100:
-                    Multiplier = MainframeReference.Multiplier.x1;
+                case Scripts.Mainframe.Multiplier.x100:
+                    Multiplier = Scripts.Mainframe.Multiplier.x1;
                     multiplierField.text = "1";
                     break;
             }

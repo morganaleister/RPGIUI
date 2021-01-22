@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     public class Effects : MonoBehaviour
 	{

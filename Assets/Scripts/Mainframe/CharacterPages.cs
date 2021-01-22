@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     public class CharacterPages : MonoBehaviour
     {
@@ -31,37 +31,38 @@ namespace Scripts.MainframeReference
             }
         }
 
-        public void Save()
-        {
-          if (_target.GetStringValue(0) == string.Empty)
-                throw new UnassignedReferenceException();
+        //public void Save()
+        //{
+        //  if (_target.GetStringValue(0) == string.Empty)
+        //        throw new UnassignedReferenceException();
 
-            if (!FilesManager.Save(_target, FilesManager.FileEncoding))
-            {
-                var msgbox = MessageBox.Show("File already exists, overwrite?");
+        //    if (!FilesManager.Save(_target, FilesManager.FileEncoding))
+        //    {
+        //        var msgbox = MessageBox.Show("File already exists, overwrite?");
 
-                StartCoroutine(OverwriteYN(msgbox));
-            };
-        }
-        private IEnumerator OverwriteYN(MessageBox msgbox)
-        {
-            bool ans;
+        //        StartCoroutine(OverwriteYN(msgbox));
+        //    };
+        //}
 
-            yield return new WaitUntil(() => msgbox.WasPressed);
-            ans = msgbox.Result;
+        //private IEnumerator OverwriteYN(MessageBox msgbox)
+        //{
+        //    bool ans;
 
-            if (!ans)
-            { //cancel if not authorized to overwrite
+        //    yield return new WaitUntil(() => msgbox.WasPressed);
+        //    ans = msgbox.Result;
 
-                UnityEngine.Debug.Log("Save operation sucessfully cancelled.");
-                yield break;
-            }
-            else FilesManager.Save(_target, FilesManager.FileEncoding, ans);
+        //    if (!ans)
+        //    { //cancel if not authorized to overwrite
 
-            UnityEngine.Debug.Log("Save operation successful. File overwritten");
+        //        UnityEngine.Debug.Log("Save operation sucessfully cancelled.");
+        //        yield break;
+        //    }
+        //    else FilesManager.Save(_target, FilesManager.FileEncoding, ans);
 
-            yield break;
-        }
+        //    UnityEngine.Debug.Log("Save operation successful. File overwritten");
+
+        //    yield break;
+        //}
 
     }
 }

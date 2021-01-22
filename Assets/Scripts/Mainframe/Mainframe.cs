@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Scripts.Mainframe.ScriptableObjects;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
 
     public class Mainframe : MonoBehaviour
@@ -13,7 +14,7 @@ namespace Scripts.MainframeReference
         public static GameObject[] Prefabs => Singleton._prefabs;
         public static ListedStrDir CharAttributes => Singleton._charAttributes;
         
-        public static KeysList CharStrings => Singleton._charStrings;
+        public static ListedKeys CharStrings => Singleton._charStrings;
         
 
         [SerializeField] private SceneField[] _scenes;
@@ -21,7 +22,7 @@ namespace Scripts.MainframeReference
 
         [SerializeField] private DiceFormula _allDices;
         [SerializeField] private ListedStrDir _charAttributes;
-        [SerializeField] private KeysList _charStrings;
+        [SerializeField] private ListedKeys _charStrings;
         
         
 
@@ -69,7 +70,7 @@ namespace Scripts.MainframeReference
 
 
 
-        public void Test(string text) => Debug.Test.Print(text);
+        public void Test(string text) => Debuggering.Test.Print(text);
 
 
     }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     public class SelectableButton : BaseButton, ISelectable
     {

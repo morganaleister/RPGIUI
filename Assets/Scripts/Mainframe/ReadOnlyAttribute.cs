@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     [AttributeUsage(AttributeTargets.Field, Inherited = true)]
     public class ReadOnlyAttribute : PropertyAttribute { }

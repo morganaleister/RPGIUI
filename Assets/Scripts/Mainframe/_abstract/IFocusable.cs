@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     public interface IFocusable
     {

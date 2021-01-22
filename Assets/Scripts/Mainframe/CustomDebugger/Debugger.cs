@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Scripts.MainframeReference.Debug
+namespace Scripts.Mainframe.Debuggering
 {
     [ExecuteAlways()]
     [RequireComponent(typeof(AutoSorter))]
@@ -13,7 +13,7 @@ namespace Scripts.MainframeReference.Debug
         private Dictionary<string, TextControl> _lines = new Dictionary<string, TextControl>();
         private Dictionary<string, List<TextControl>> _groups = new Dictionary<string, List<TextControl>>();
 
-        private AutoSorter autoSorter;
+        private readonly AutoSorter autoSorter = null;
 
         private void Start()
         {
@@ -24,7 +24,7 @@ namespace Scripts.MainframeReference.Debug
         public static TextControl Write(string key, string text, string group = "")
         {
             TextControl line;
-           
+
             if (Singleton._lines.TryGetValue(key, out line)) line.Label = text;
             else line = Create(key, text);
 
@@ -32,7 +32,7 @@ namespace Scripts.MainframeReference.Debug
             {
                 List<TextControl> controlGroup = new List<TextControl>();
 
-                if (Singleton._groups.TryGetValue(group,out controlGroup)) controlGroup.Add(line);
+                if (Singleton._groups.TryGetValue(group, out controlGroup)) controlGroup.Add(line);
                 else
                 {
                     controlGroup.Add(line);
@@ -50,7 +50,7 @@ namespace Scripts.MainframeReference.Debug
             Singleton.autoSorter.Add(go.transform);
             Singleton._lines.Add(key, tc);
 
-            tc.Label = text;            
+            tc.Label = text;
 
             return tc;
         }

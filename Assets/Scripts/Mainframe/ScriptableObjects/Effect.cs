@@ -2,7 +2,7 @@
 using UnityEngine;
 using System;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe.ScriptableObjects
 {
     [Serializable]
     [CreateAssetMenu(fileName = "new Effect", menuName = "ScriptableObjects/Effect")]

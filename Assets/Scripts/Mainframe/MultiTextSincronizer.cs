@@ -2,7 +2,7 @@
 using UnityEngine;
 using TMPro;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     [ExecuteInEditMode]
     public class MultiTextSincronizer : MonoBehaviour

@@ -6,7 +6,7 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     public class GestureTracker : MonoBehaviour
     {

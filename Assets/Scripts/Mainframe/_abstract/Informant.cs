@@ -1,10 +1,9 @@
-﻿using UnityEngine.Events;
+﻿using System;
+using UnityEngine.Events;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     [System.Serializable]
-    public class Informant : UnityEvent<UpdateData>
-    {
-    }
+    public class Informant : UnityEvent<UpdateData> { }
 
 }

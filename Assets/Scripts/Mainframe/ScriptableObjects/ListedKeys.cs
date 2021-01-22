@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "new KeyList", menuName = "ScriptableObjects/KeyList")]
-    public class KeysList : ScriptableObject
+    [CreateAssetMenu(fileName = "new ListedKeys", menuName = "ScriptableObjects/ListedKeys")]
+    public class ListedKeys : ScriptableObject
     {
         [SerializeField] private string[] _keys;
 
@@ -24,7 +24,8 @@ namespace Scripts.MainframeReference
             return -1;
         }
 
-        public static implicit operator string[](KeysList sc) => sc._keys;
+        public static implicit operator string[](ListedKeys sc) => sc._keys;
+
         public virtual string this[int index]
         {
             get => _keys[index];

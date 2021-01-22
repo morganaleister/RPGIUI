@@ -1,7 +1,7 @@
 ﻿using UnityEngine.Events;
 using UnityEditor;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     public class HighlightableButton : BaseButton, IHighlightable
     {

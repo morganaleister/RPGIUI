@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "new GameObjectCollection", menuName = "ScriptableObjects/GameObjectCollection")]
     public class GameObjectCollection : ScriptableObject

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     [System.Serializable]
     public class Dice

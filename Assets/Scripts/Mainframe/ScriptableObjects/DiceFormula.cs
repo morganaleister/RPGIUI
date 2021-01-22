@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "new DiceFormula", menuName = "ScriptableObjects/DiceFormula")]
     public class DiceFormula : ScriptableObject 

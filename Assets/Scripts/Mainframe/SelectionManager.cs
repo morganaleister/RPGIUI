@@ -1,8 +1,8 @@
-﻿using Scripts.MainframeReference.Debug;
+﻿using Scripts.Mainframe.Debuggering;
 using System;
 using UnityEngine;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     public class SelectionManager : MonoBehaviour
     {

@@ -1,4 +1,6 @@
-﻿namespace Scripts.MainframeReference
+﻿using Scripts.Mainframe.ScriptableObjects;
+
+namespace Scripts.Mainframe
 {
     public class RandomizeControl : ValueControl
     {

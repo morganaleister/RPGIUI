@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     [CustomEditor(typeof(CharacterManager))]
     public class CharacterManagerCustomEditor : Editor

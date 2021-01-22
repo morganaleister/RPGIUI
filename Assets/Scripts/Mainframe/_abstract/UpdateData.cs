@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts.MainframeReference
+namespace Scripts.Mainframe
 {
     [System.Serializable]
     public class UpdateData
@@ -9,7 +9,7 @@ namespace Scripts.MainframeReference
         public string _oldValue, _newValue;
 
         public string Text { get =>
-                string.Format("Object [{0}]'s value [{1}] now is [{1}]",
+                string.Format("Object [{0}]'s old value [{1}] is now [{1}]",
                     _sender, _oldValue, _newValue); }
 
         public UpdateData(object sender, string oldValue, string currentValue = "")

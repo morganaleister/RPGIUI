@@ -1,4 +1,4 @@
-﻿namespace Scripts.MainframeReference
+﻿namespace Scripts.Mainframe
 {
     public class ByRef<T> { public T Value { get; set; } }
 }
