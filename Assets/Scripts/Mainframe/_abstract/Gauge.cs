@@ -8,8 +8,8 @@ namespace Scripts.Mainframe
     [System.Serializable]
     public class Gauge
     {
-        public Informant CurrentValueChanged = new Informant();
-        public Informant StatusChanged = new Informant();
+        public Informant OnCurrentValueChanged = new Informant();
+        public Informant OnStatusChanged = new Informant();
 
         public string _type = "HP";
         public enum Status
@@ -53,7 +53,7 @@ namespace Scripts.Mainframe
                     _current = value;
                 }
                 update._newValue = Normalized.ToString();
-                CurrentValueChanged?.Invoke(update);
+                OnCurrentValueChanged?.Invoke(update);
 
             }
         }
@@ -79,7 +79,7 @@ namespace Scripts.Mainframe
             Max = max;
             Current = current;
 
-            CurrentValueChanged.AddListener(CheckStatus);
+            OnCurrentValueChanged.AddListener(CheckStatus);
         }
 
         private void CheckStatus(UpdateData updateData)
@@ -107,7 +107,7 @@ namespace Scripts.Mainframe
             {
                 UpdateData update = new UpdateData(this, oldStatus.ToString(), newStatus.ToString());
 
-                StatusChanged?.Invoke(update);
+                OnStatusChanged?.Invoke(update);
             }
         }
         

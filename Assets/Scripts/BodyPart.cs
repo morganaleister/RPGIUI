@@ -24,20 +24,10 @@ namespace Scripts
 
         [SerializeField]
         private Gauge _hp;
-        [SerializeField]
-        private float _limitMultiplier = 1;
 
         public BodyPart[] _sharedSubParts;
+                
         
-
-        
-        
-
-        public float LimitMultiplier
-        {
-            get => Mathf.Clamp(_limitMultiplier, 0, 1);
-            set => _limitMultiplier = Mathf.Clamp(value, 0, 1);
-        }
         public float HP
         {
             get
@@ -47,7 +37,7 @@ namespace Scripts
                 //gets only the private gauge
                 if (_sharedSubParts == null
                     || bpCount == 0)
-                    return _hp.Current * LimitMultiplier;
+                    return _hp.Current; //  * LimitMultiplier;
                 else //gets the average among children's hp and own's sum.
                 {
 
@@ -68,7 +58,7 @@ namespace Scripts
                 if (_sharedSubParts == null
                        || bpCount == 0)
                     //update private gauge
-                    _hp.Current = value * LimitMultiplier;
+                    _hp.Current = value;// * LimitMultiplier;
                 else //update own and each children an equally ammount divided among the total of children's and own.
                 {
                     _hp.Current += value / (bpCount + 1);
@@ -109,16 +99,14 @@ namespace Scripts
         public bool Enhanced { get; set; } = false;
 
 
-
         public BodyPart(int subparts = 0)
         {
             _partName = "bodyPart";
             _pluralName = "bodyParts";
             
-            _hp = new Gauge("HP", 0.5f, 1, true, true);
+            _hp = new Gauge("HP", 1, 1, true, true);
             _sharedSubParts = new BodyPart[subparts];
         }
-
     }
     
 

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db0b1ce07f5c33242870476bd082933d, type: 3}
-  m_Name: Hominid
+  m_Name: hominid_hand
   m_EditorClassIdentifier: 
   _name: 
   _bodyParts:
-  - _partName: Torso
-    _pluralName: Torsoes
-    _critical: 1
+  - _partName: Hand
+    _pluralName: Hands
+    _critical: 0
     _hp:
       OnCurrentValueChanged:
         m_PersistentCalls:
@@ -31,6 +31,40 @@ MonoBehaviour:
       _current: 1
     _limitMultiplier: 1
     _sharedSubParts:
+    - _partName: Finger
+      _pluralName: Fingers
+      _critical: 0
+      _hp:
+        OnCurrentValueChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        OnStatusChanged:
+          m_PersistentCalls:
+            m_Calls: []
+        _type: 
+        _underflow: 0
+        _overflow: 0
+        _max: 1
+        _current: 0.5
+      _limitMultiplier: 0
+      _sharedSubParts:
+      - _partName: 
+        _pluralName: 
+        _critical: 0
+        _hp:
+          OnCurrentValueChanged:
+            m_PersistentCalls:
+              m_Calls: []
+          OnStatusChanged:
+            m_PersistentCalls:
+              m_Calls: []
+          _type: 
+          _underflow: 0
+          _overflow: 0
+          _max: 1
+          _current: 0.25
+        _limitMultiplier: 3.59
+        _sharedSubParts: []
     - _partName: 
       _pluralName: 
       _critical: 0
@@ -65,23 +99,6 @@ MonoBehaviour:
           _current: 0.25
         _limitMultiplier: 3.59
         _sharedSubParts: []
-  - _partName: Head
-    _pluralName: Heads
-    _critical: 0
-    _hp:
-      OnCurrentValueChanged:
-        m_PersistentCalls:
-          m_Calls: []
-      OnStatusChanged:
-        m_PersistentCalls:
-          m_Calls: []
-      _type: HP
-      _underflow: 1
-      _overflow: 1
-      _max: 1
-      _current: 1
-    _limitMultiplier: 1
-    _sharedSubParts:
     - _partName: 
       _pluralName: 
       _critical: 0
@@ -116,23 +133,6 @@ MonoBehaviour:
           _current: 0.25
         _limitMultiplier: 3.59
         _sharedSubParts: []
-  - _partName: Arm
-    _pluralName: Arms
-    _critical: 0
-    _hp:
-      OnCurrentValueChanged:
-        m_PersistentCalls:
-          m_Calls: []
-      OnStatusChanged:
-        m_PersistentCalls:
-          m_Calls: []
-      _type: HP
-      _underflow: 1
-      _overflow: 1
-      _max: 1
-      _current: 1
-    _limitMultiplier: 1
-    _sharedSubParts:
     - _partName: 
       _pluralName: 
       _critical: 0
@@ -167,125 +167,6 @@ MonoBehaviour:
           _current: 0.25
         _limitMultiplier: 3.59
         _sharedSubParts: []
-  - _partName: Torso
-    _pluralName: Torsoes
-    _critical: 0
-    _hp:
-      OnCurrentValueChanged:
-        m_PersistentCalls:
-          m_Calls: []
-      OnStatusChanged:
-        m_PersistentCalls:
-          m_Calls: []
-      _type: HP
-      _underflow: 1
-      _overflow: 1
-      _max: 1
-      _current: 1
-    _limitMultiplier: 1
-    _sharedSubParts:
-    - _partName: 
-      _pluralName: 
-      _critical: 0
-      _hp:
-        OnCurrentValueChanged:
-          m_PersistentCalls:
-            m_Calls: []
-        OnStatusChanged:
-          m_PersistentCalls:
-            m_Calls: []
-        _type: 
-        _underflow: 0
-        _overflow: 0
-        _max: 1
-        _current: 0.5
-      _limitMultiplier: 0
-      _sharedSubParts:
-      - _partName: 
-        _pluralName: 
-        _critical: 0
-        _hp:
-          OnCurrentValueChanged:
-            m_PersistentCalls:
-              m_Calls: []
-          OnStatusChanged:
-            m_PersistentCalls:
-              m_Calls: []
-          _type: 
-          _underflow: 0
-          _overflow: 0
-          _max: 1
-          _current: 0.25
-        _limitMultiplier: 3.59
-        _sharedSubParts: []
-  - _partName: Torso
-    _pluralName: Torsoes
-    _critical: 0
-    _hp:
-      OnCurrentValueChanged:
-        m_PersistentCalls:
-          m_Calls: []
-      OnStatusChanged:
-        m_PersistentCalls:
-          m_Calls: []
-      _type: HP
-      _underflow: 1
-      _overflow: 1
-      _max: 1
-      _current: 1
-    _limitMultiplier: 1
-    _sharedSubParts:
-    - _partName: 
-      _pluralName: 
-      _critical: 0
-      _hp:
-        OnCurrentValueChanged:
-          m_PersistentCalls:
-            m_Calls: []
-        OnStatusChanged:
-          m_PersistentCalls:
-            m_Calls: []
-        _type: 
-        _underflow: 0
-        _overflow: 0
-        _max: 1
-        _current: 0.5
-      _limitMultiplier: 0
-      _sharedSubParts:
-      - _partName: 
-        _pluralName: 
-        _critical: 0
-        _hp:
-          OnCurrentValueChanged:
-            m_PersistentCalls:
-              m_Calls: []
-          OnStatusChanged:
-            m_PersistentCalls:
-              m_Calls: []
-          _type: 
-          _underflow: 0
-          _overflow: 0
-          _max: 1
-          _current: 0.25
-        _limitMultiplier: 3.59
-        _sharedSubParts: []
-  - _partName: Torso
-    _pluralName: Torsoes
-    _critical: 0
-    _hp:
-      OnCurrentValueChanged:
-        m_PersistentCalls:
-          m_Calls: []
-      OnStatusChanged:
-        m_PersistentCalls:
-          m_Calls: []
-      _type: HP
-      _underflow: 1
-      _overflow: 1
-      _max: 1
-      _current: 1
-    _limitMultiplier: 1
-    _sharedSubParts:
     - _partName: 
       _pluralName: 
       _critical: 0

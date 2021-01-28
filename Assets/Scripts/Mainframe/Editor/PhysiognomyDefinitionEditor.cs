@@ -22,37 +22,37 @@ namespace Scripts.Mainframe.ScriptableObjects
         }
     }
 
-    [CustomEditor(typeof(PhysiognomyDefinition))]
-    public class PhysiognomyDefinitionEditor : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-            Event e = Event.current;
+    //[CustomEditor(typeof(PhysiognomyDefinition))]
+    //public class PhysiognomyDefinitionEditor : Editor
+    //{
+    //    public override void OnInspectorGUI()
+    //    {
+    //        Event e = Event.current;
 
-            switch (e.type)
-            {
-                case EventType.MouseDown:
-                    //Debug.Log("mouse down");
-                    break;
-                case EventType.MouseEnterWindow:
-                    Debug.Log("mouse left a window");
-                    break;
-                case EventType.MouseLeaveWindow:
-                    Debug.Log("mouse entered a window");
-                    break;
-                default:
-                    break;
-            }
+    //        switch (e.type)
+    //        {
+    //            case EventType.MouseDown:
+    //                //Debug.Log("mouse down");
+    //                break;
+    //            case EventType.MouseEnterWindow:
+    //                Debug.Log("mouse left a window");
+    //                break;
+    //            case EventType.MouseLeaveWindow:
+    //                Debug.Log("mouse entered a window");
+    //                break;
+    //            default:
+    //                break;
+    //        }
 
-            base.OnInspectorGUI();
+    //        base.OnInspectorGUI();
 
-            var click = GUILayout.Button("Populate");
+    //        var click = GUILayout.Button("Populate");
 
-            if (click)
-            {
-                PhysiognomyDefinitionEditorWindow.Open((PhysiognomyDefinition)target);
-            }
-        }
+    //        if (click)
+    //        {
+    //            PhysiognomyDefinitionEditorWindow.Open((PhysiognomyDefinition)target);
+    //        }
+    //    }
 
-    }
+    //}
 }
